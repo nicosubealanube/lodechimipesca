@@ -26,7 +26,7 @@ export default function WeatherCard({ data }) {
                     const weatherCode = data.weather_code ? data.weather_code[index] : null
                     const isDay = data.is_day ? data.is_day[index] : 1
 
-                    const isHighWind = windSpeed > 19
+                    const isHighWind = windSpeed >= 19
                     const isGoodPressure = pressure > 1015
 
                     const tideHeight = data.tide_height ? data.tide_height[index] : null
