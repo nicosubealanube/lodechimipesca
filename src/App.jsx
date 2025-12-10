@@ -54,8 +54,13 @@ function App() {
             // Filter data for the selected day
             // Open-Meteo returns hourly data for all requested days in a single array
             // We need to slice the 24 hours corresponding to the selected day
-            const startIndex = dateOffset * 24
-            const endIndex = startIndex + 24
+
+            const currentHour = new Date().getHours()
+            // If it's today (offset 0), start from current hour, else start from 00:00
+            const hourOffset = dateOffset === 0 ? currentHour : 0
+
+            const startIndex = (dateOffset * 24) + hourOffset
+            const endIndex = (dateOffset + 1) * 24 // Always end at the end of the selected day (24h block end)
 
             const hourlyData = {
                 time: weatherData.hourly.time.slice(startIndex, endIndex),
