@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Footer() {
     const phoneNumber = "5491137688582" // Placeholder
-    const message = "Hola Chimi! Quiero consultar por carnada y artículos."
+    const message = "Hola Chimi! Quiero consultar por carnada y artículos de pesca."
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
 
     return (
