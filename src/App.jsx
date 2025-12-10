@@ -5,11 +5,15 @@ import Footer from './components/Footer'
 import { getFishingPrediction } from './utils/fishingLogic'
 
 const LOCATIONS = [
-    { name: 'Costanera Norte', lat: -34.5444, lon: -58.4320 },
-    { name: 'Zarate', lat: -34.0958, lon: -59.0242 },
-    { name: 'Quilmes', lat: -34.7242, lon: -58.2608 },
-    { name: 'Vicente Lopez', lat: -34.5228, lon: -58.4778 },
-    { name: 'Campana', lat: -34.1687, lon: -58.9591 },
+    { name: 'Cohelo - San Fernando', lat: -34.437601, lon: -58.537828 },
+    { name: 'Costanera de Campana', lat: -34.1687, lon: -58.9591 },
+    { name: 'Costanera de Zarate', lat: -34.0958, lon: -59.0242 },
+    { name: 'Costanera Norte - Ribs al Rio', lat: -34.5444, lon: -58.4320 },
+    { name: 'El Reloj - Tigre', lat: -34.407726, lon: -58.591651 },
+    { name: 'Mon. a Colon - Aeroparque', lat: -34.556746, lon: -58.409459 },
+    { name: 'Parana y el Rio - Vte Lopez', lat: -34.5228, lon: -58.4778 },
+    { name: 'Parque de los Niños - Nuñez', lat: -34.526634, lon: -58.457030 },
+    { name: 'Pejerrey Club Quilmes', lat: -34.7242, lon: -58.2608 },
 ]
 
 const getFormattedDate = (offset) => {
