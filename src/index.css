@@ -337,7 +337,63 @@ select:focus {
   height: 20px;
 }
 
+
 .weather-icon {
   font-size: 1.8rem;
   line-height: 1;
+}
+
+/* Location Info Card */
+.location-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 16px;
+  /* Space between controls and card (or just place it in flow) */
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.location-image-container {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.location-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.location-image:hover {
+  transform: scale(1.05);
+}
+
+.location-details {
+  padding: 20px;
+}
+
+.location-title {
+  font-size: 1.2rem;
+  color: var(--primary-color);
+  margin-bottom: 12px;
+  border-bottom: 2px solid var(--glass-border);
+  padding-bottom: 8px;
+}
+
+.location-info-list {
+  list-style: none;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.location-info-list li strong {
+  color: var(--secondary-color);
+  margin-right: 6px;
 }

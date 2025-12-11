@@ -2,13 +2,43 @@ import { useState } from 'react'
 import Header from './components/Header'
 import WeatherCard from './components/WeatherCard'
 import Footer from './components/Footer'
+import LocationInfoCard from './components/LocationInfoCard'
 import { getFishingPrediction } from './utils/fishingLogic'
 
+import coheloImage from './assets/cohelo_san_fernando.png'
+import costaneraImage from './assets/costanera_norte.jpg'
+
 const LOCATIONS = [
-    { name: 'Cohelo - San Fernando', lat: -34.437601, lon: -58.537828 },
+    {
+        name: 'Cohelo - San Fernando',
+        lat: -34.437601,
+        lon: -58.537828,
+        details: {
+            image: coheloImage,
+            address: 'Del Arca 400',
+            parking: 'Gratuito',
+            bathrooms: 'Si',
+            hours: '8hs a 00hs',
+            bait: 'Puesto fijo al ingresar',
+            notes: 'Pueden pedir permiso de pesca. Tiene juegos de plaza.'
+        }
+    },
     { name: 'Costanera de Campana', lat: -34.1687, lon: -58.9591 },
     { name: 'Costanera de Zarate', lat: -34.0958, lon: -59.0242 },
-    { name: 'Costanera Norte - Ribs al Rio', lat: -34.5444, lon: -58.4320 },
+    {
+        name: 'Costanera Norte - Ribs al Rio',
+        lat: -34.5444,
+        lon: -58.4320,
+        details: {
+            image: costaneraImage,
+            address: 'Av. Costanera Rafael Obligado 6920',
+            parking: 'Gratuito',
+            bathrooms: 'No',
+            hours: '24hs',
+            bait: 'Puesto LodeChimiPesca',
+            notes: 'Pueden pedir pasar al baño de Ribs (con propina) o caminar al Parque de la Memoria.'
+        }
+    },
     { name: 'El Reloj - Tigre', lat: -34.407726, lon: -58.591651 },
     { name: 'Mon. a Colon - Aeroparque', lat: -34.556746, lon: -58.409459 },
     { name: 'Parana y el Rio - Vte Lopez', lat: -34.5228, lon: -58.4778 },
@@ -19,7 +49,7 @@ const LOCATIONS = [
 const getFormattedDate = (offset) => {
     const date = new Date()
     date.setDate(date.getDate() + offset)
-    const options = { day: 'numeric', month: 'long' }
+    const options = { weekday: 'long', day: 'numeric' }
     return date.toLocaleDateString('es-AR', options)
 }
 
@@ -30,12 +60,17 @@ const DATES = [
 ]
 
 function App() {
-    const [location, setLocation] = useState(LOCATIONS[0])
+    const [location, setLocation] = useState(null)
     const [dateOffset, setDateOffset] = useState(DATES[0].value)
     const [weatherData, setWeatherData] = useState(null)
     const [loading, setLoading] = useState(false)
 
     const fetchWeather = async () => {
+        if (!location) {
+            alert("Por favor selecciona una ubicación.")
+            return
+        }
+
         setLoading(true)
         try {
             // Open-Meteo API (Weather & Marine)
@@ -90,14 +125,19 @@ function App() {
                     <div className="control-group">
                         <label>¿Dónde vas a pescar?</label>
                         <select
-                            value={location.name}
+                            value={location ? location.name : ""}
                             onChange={(e) => setLocation(LOCATIONS.find(l => l.name === e.target.value))}
                         >
+                            <option value="" disabled>Seleccione un lugar...</option>
                             {LOCATIONS.map(loc => (
                                 <option key={loc.name} value={loc.name}>{loc.name}</option>
                             ))}
                         </select>
                     </div>
+
+                    {location && location.details && (
+                        <LocationInfoCard location={location} />
+                    )}
 
                     <div className="control-group">
                         <label>¿Cuándo vas a pescar?</label>
