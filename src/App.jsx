@@ -7,6 +7,9 @@ import { getFishingPrediction } from './utils/fishingLogic'
 
 import coheloImage from './assets/cohelo_san_fernando.png'
 import costaneraImage from './assets/costanera_norte.jpg'
+import monumentoImage from './assets/monumento_colon.png'
+import relojImage from './assets/reloj_tigre.png'
+import pejerreyImage from './assets/pejerrey_club.png'
 
 const LOCATIONS = [
     {
@@ -39,11 +42,50 @@ const LOCATIONS = [
             notes: 'Pueden pedir pasar al baño de Ribs (con propina) o caminar al Parque de la Memoria.'
         }
     },
-    { name: 'El Reloj - Tigre', lat: -34.407726, lon: -58.591651 },
-    { name: 'Mon. a Colon - Aeroparque', lat: -34.556746, lon: -58.409459 },
+    {
+        name: 'El Reloj - Tigre',
+        lat: -34.407726,
+        lon: -58.591651,
+        details: {
+            image: relojImage,
+            address: 'Caupolican 195, Rincon de Milberg',
+            parking: 'Si',
+            bathrooms: 'No',
+            hours: '24hs',
+            bait: 'Vendedores Ambulantes',
+            notes: '-'
+        }
+    },
+    {
+        name: 'Mon. a Colon - Aeroparque',
+        lat: -34.556746,
+        lon: -58.409459,
+        details: {
+            image: monumentoImage,
+            address: 'Av. Costanera Rafael Obligado 80',
+            parking: 'No',
+            bathrooms: 'No',
+            hours: '24hs',
+            bait: 'Vendedores Ambulantes',
+            notes: 'Pueden cruzar al Aeroparque para usar los baños.'
+        }
+    },
     { name: 'Parana y el Rio - Vte Lopez', lat: -34.5228, lon: -58.4778 },
     { name: 'Parque de los Niños - Nuñez', lat: -34.526634, lon: -58.457030 },
-    { name: 'Pejerrey Club Quilmes', lat: -34.7242, lon: -58.2608 },
+    {
+        name: 'Pejerrey Club - Quilmes',
+        lat: -34.7242,
+        lon: -58.2608,
+        details: {
+            image: pejerreyImage,
+            address: 'Av. Cervantes, Av. Isidoro Iriarte - Quilmes',
+            parking: 'Si',
+            bathrooms: 'Si',
+            hours: '24hs',
+            bait: 'Vendedor Ambulante en la entrada.',
+            notes: 'Muelle privado, cobra entrada de $8.000 el día.'
+        }
+    },
 ]
 
 const getFormattedDate = (offset) => {
