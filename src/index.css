@@ -147,8 +147,8 @@ select:focus {
 
 .hour-item {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  /* Time - Condition/Icon - Temp */
+  grid-template-columns: 80px 140px 1fr;
+  /* Time - Temp/Icon - Details */
   align-items: center;
   gap: 16px;
   padding: 16px;

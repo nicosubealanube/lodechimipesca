@@ -10,6 +10,8 @@ import costaneraImage from './assets/costanera_norte.jpg'
 import monumentoImage from './assets/monumento_colon.png'
 import relojImage from './assets/reloj_tigre.png'
 import pejerreyImage from './assets/pejerrey_club.png'
+import paranaImage from './assets/parana_vte_lopez.png'
+import parqueImage from './assets/parque_ninos.jpg'
 
 const LOCATIONS = [
     {
@@ -70,8 +72,34 @@ const LOCATIONS = [
             notes: 'Pueden cruzar al Aeroparque para usar los baños.'
         }
     },
-    { name: 'Parana y el Rio - Vte Lopez', lat: -34.5228, lon: -58.4778 },
-    { name: 'Parque de los Niños - Nuñez', lat: -34.526634, lon: -58.457030 },
+    {
+        name: 'Parana y el Rio - Vte Lopez',
+        lat: -34.5228,
+        lon: -58.4778,
+        details: {
+            image: paranaImage,
+            address: 'Paraná 2, La Lucila.',
+            parking: 'Si',
+            bathrooms: 'Si',
+            hours: '24hs',
+            bait: 'Vendedores Ambulantes',
+            notes: '-'
+        }
+    },
+    {
+        name: 'Parque de los Niños - Nuñez',
+        lat: -34.526634,
+        lon: -58.457030,
+        details: {
+            image: parqueImage,
+            address: 'Av. Int. Cantilo y Av. Gral. Paz.',
+            parking: 'Si',
+            bathrooms: 'Si',
+            hours: 'de 10hs a 18hs',
+            bait: 'Vendedores Ambulantes',
+            notes: 'Baño público en el ingreso al frente del estacionamiento.'
+        }
+    },
     {
         name: 'Pejerrey Club - Quilmes',
         lat: -34.7242,
@@ -118,7 +146,7 @@ function App() {
             // Open-Meteo API (Weather & Marine)
             const [weatherResponse, marineResponse] = await Promise.all([
                 fetch(
-                    `https://api.open-meteo.com/v1/forecast?latitude=${location.lat}&longitude=${location.lon}&hourly=temperature_2m,surface_pressure,wind_speed_10m,weather_code,is_day&forecast_days=3&timezone=auto`
+                    `https://api.open-meteo.com/v1/forecast?latitude=${location.lat}&longitude=${location.lon}&hourly=temperature_2m,surface_pressure,wind_speed_10m,wind_direction_10m,weather_code,is_day&forecast_days=3&timezone=auto`
                 ),
                 fetch(
                     `https://marine-api.open-meteo.com/v1/marine?latitude=${location.lat}&longitude=${location.lon}&hourly=wave_height&forecast_days=3&timezone=auto`
@@ -144,6 +172,7 @@ function App() {
                 temperature_2m: weatherData.hourly.temperature_2m.slice(startIndex, endIndex),
                 surface_pressure: weatherData.hourly.surface_pressure.slice(startIndex, endIndex),
                 wind_speed_10m: weatherData.hourly.wind_speed_10m.slice(startIndex, endIndex),
+                wind_direction_10m: weatherData.hourly.wind_direction_10m.slice(startIndex, endIndex),
                 weather_code: weatherData.hourly.weather_code.slice(startIndex, endIndex),
                 is_day: weatherData.hourly.is_day.slice(startIndex, endIndex),
                 wave_height: marineData.hourly.wave_height ? marineData.hourly.wave_height.slice(startIndex, endIndex) : [],
