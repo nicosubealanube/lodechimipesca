@@ -147,7 +147,7 @@ select:focus {
 
 .hour-item {
   display: grid;
-  grid-template-columns: 80px 140px 1fr;
+  grid-template-columns: 140px 80px 1fr;
   /* Time - Temp/Icon - Details */
   align-items: center;
   gap: 16px;
@@ -203,13 +203,13 @@ select:focus {
     padding: 12px;
   }
 
-  .time-col {
+  .temp-col {
     grid-column: 1;
     grid-row: 1;
     justify-self: start;
   }
 
-  .temp-col {
+  .time-col {
     grid-column: 2;
     grid-row: 1;
     justify-self: end;

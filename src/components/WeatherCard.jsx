@@ -52,13 +52,13 @@ export default function WeatherCard({ data }) {
 
                     return (
                         <div key={t} className={`hour-item ${isHighWind ? 'warning' : ''} ${isGoodPressure ? 'good-pressure-bg' : ''}`}>
-                            <div className="time-col">
-                                <span className="time">{hours}</span>
-                            </div>
-
                             <div className="temp-col">
                                 <span className="temp">{Math.round(data.temperature_2m[index])}°</span>
                                 {weatherCode !== null && <span className="weather-icon">{getWeatherIcon(weatherCode, isDay)}</span>}
+                            </div>
+
+                            <div className="time-col">
+                                <span className="time">{hours}</span>
                             </div>
 
                             <div className="details">

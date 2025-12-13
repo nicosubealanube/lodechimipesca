@@ -41,7 +41,7 @@ const LOCATIONS = [
             bathrooms: 'No',
             hours: '24hs',
             bait: 'Puesto LodeChimiPesca',
-            notes: 'Pueden pedir pasar al baño de Ribs (con propina) o caminar al Parque de la Memoria.'
+            notes: 'Si cruzan a Ribs y nombrando a Chimi, una meada sin cargo'
         }
     },
     {
