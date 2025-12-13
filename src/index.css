@@ -192,6 +192,48 @@ select:focus {
   justify-content: center;
 }
 
+/* Mobile Layout Adaptation */
+@media (max-width: 480px) {
+  .hour-item {
+    grid-template-columns: 1fr auto;
+    /* Time left, Temp right */
+    grid-template-rows: auto auto;
+    /* Two rows */
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .time-col {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+  }
+
+  .temp-col {
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  .details {
+    grid-column: 1 / -1;
+    /* Span full width */
+    grid-row: 2;
+    justify-content: space-between;
+    /* Spread items */
+    gap: 8px;
+    padding-top: 8px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .detail-item {
+    flex: 1;
+    /* Distribute space evenly */
+    min-width: 60px;
+    /* Ensure not too squashed */
+  }
+}
+
 /* Header Styles */
 .header {
   display: flex;
