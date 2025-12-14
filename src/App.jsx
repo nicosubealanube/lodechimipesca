@@ -14,6 +14,7 @@ import paranaImage from './assets/parana_vte_lopez.png'
 import parqueImage from './assets/parque_ninos.jpg'
 import asocArgPescaImage from './assets/asoc_arg_pesca.png'
 import muelleMartinezImage from './assets/muelle_martinez.png'
+import costaneraZarateImage from './assets/costanera_zarate.png'
 
 const LOCATIONS = [
     {
@@ -45,7 +46,20 @@ const LOCATIONS = [
         }
     },
 
-    { name: 'Costanera de Zarate', lat: -34.0958, lon: -59.0242 },
+    {
+        name: 'Costanera de Zarate - Zarate',
+        lat: -34.0958,
+        lon: -59.0242,
+        details: {
+            image: costaneraZarateImage,
+            address: 'Costanera Luis Rocha, B2800 Zárate',
+            parking: 'Si',
+            bathrooms: 'No',
+            hours: '24hs',
+            bait: '-',
+            notes: 'Se puede llegar en tren desde la estacion Villa Ballester.'
+        }
+    },
     {
         name: 'Costanera Norte - Ribs al Rio',
         lat: -34.5444,
@@ -57,7 +71,7 @@ const LOCATIONS = [
             bathrooms: 'No',
             hours: '24hs',
             bait: 'Puesto LodeChimiPesca',
-            notes: 'Si cruzan a Ribs y nombrando a Chimi, una meada sin cargo'
+            notes: 'Estacionar a 45° para evitar multas'
         }
     },
     {
@@ -125,7 +139,7 @@ const LOCATIONS = [
             address: 'Av. Int. Cantilo y Av. Gral. Paz.',
             parking: 'Si',
             bathrooms: 'Si',
-            hours: 'de 10hs a 18hs',
+            hours: 'de 8hs a 19hs',
             bait: 'Vendedores Ambulantes',
             notes: 'Baño público en el ingreso al frente del estacionamiento.'
         }
