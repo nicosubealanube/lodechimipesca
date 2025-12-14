@@ -12,8 +12,23 @@ import relojImage from './assets/reloj_tigre.png'
 import pejerreyImage from './assets/pejerrey_club.png'
 import paranaImage from './assets/parana_vte_lopez.png'
 import parqueImage from './assets/parque_ninos.jpg'
+import asocArgPescaImage from './assets/asoc_arg_pesca.png'
 
 const LOCATIONS = [
+    {
+        name: 'Asoc. Arg. de Pesca - CABA',
+        lat: -34.596830,
+        lon: -58.362605,
+        details: {
+            image: asocArgPescaImage,
+            address: 'Av. Int. Hernan M. Giralt 22 - CABA',
+            parking: 'Si',
+            bathrooms: 'Si',
+            hours: '24hs',
+            bait: '-',
+            notes: 'Muelle privado.'
+        }
+    },
     {
         name: 'Cohelo - San Fernando',
         lat: -34.437601,
@@ -28,7 +43,7 @@ const LOCATIONS = [
             notes: 'Pueden pedir permiso de pesca. Tiene juegos de plaza.'
         }
     },
-    { name: 'Costanera de Campana', lat: -34.1687, lon: -58.9591 },
+
     { name: 'Costanera de Zarate', lat: -34.0958, lon: -59.0242 },
     {
         name: 'Costanera Norte - Ribs al Rio',
