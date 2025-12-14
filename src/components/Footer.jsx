@@ -41,7 +41,7 @@ export default function Footer() {
                 Si la info de la app te sirvió y queres colaborar con los desarrolladores para mejorarla, podes hacer una donación voluntaria al siguiente link: <strong><a href="https://link.mercadopago.com.ar/lodechimipesca" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>link.mercadopago.com.ar/lodechimipesca</a></strong>
             </p>
             <p style={{ fontSize: '0.7rem', marginTop: '10px', opacity: 0.7 }}>
-                app desarrollada por lodechimipesca y nicosubealanube ®
+                App desarrollada por lodechimipesca y nicosubealanube ®
             </p>
         </footer>
     )
