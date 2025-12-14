@@ -13,6 +13,7 @@ import pejerreyImage from './assets/pejerrey_club.png'
 import paranaImage from './assets/parana_vte_lopez.png'
 import parqueImage from './assets/parque_ninos.jpg'
 import asocArgPescaImage from './assets/asoc_arg_pesca.png'
+import muelleMartinezImage from './assets/muelle_martinez.png'
 
 const LOCATIONS = [
     {
@@ -85,6 +86,20 @@ const LOCATIONS = [
             hours: '24hs',
             bait: 'Vendedores Ambulantes',
             notes: 'Pueden cruzar al Aeroparque para usar los baños.'
+        }
+    },
+    {
+        name: 'Muelle de Martinez - Martinez',
+        lat: -34.494808,
+        lon: -58.516455,
+        details: {
+            image: muelleMartinezImage,
+            address: 'Sebastián Elcano 2400, Martínez',
+            parking: 'Si',
+            bathrooms: 'No',
+            hours: '24hs',
+            bait: 'No hay vendedores',
+            notes: 'Se puede ir por la noche pero no está iluminado.'
         }
     },
     {

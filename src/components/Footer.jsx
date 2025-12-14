@@ -37,6 +37,12 @@ export default function Footer() {
                     YouTube
                 </a>
             </div>
+            <p style={{ fontSize: '0.8rem', marginTop: '20px', textAlign: 'center', maxWidth: '80%' }}>
+                Si la info de la app te sirvió y queres colaborar con los desarrolladores para mejorarla, podes hacer una donación voluntaria al siguiente alias: <strong>lodechimi28</strong> a nombre de Sergio Paladino
+            </p>
+            <p style={{ fontSize: '0.7rem', marginTop: '10px', opacity: 0.7 }}>
+                app desarrollada por lodechimipesca y nicosubealanube ®
+            </p>
         </footer>
     )
 }
