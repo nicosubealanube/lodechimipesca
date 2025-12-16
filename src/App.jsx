@@ -23,7 +23,7 @@ const LOCATIONS = [
         lon: -58.362605,
         details: {
             image: asocArgPescaImage,
-            address: 'Av. Int. Hernan M. Giralt 22 - CABA',
+            address: 'Av. Int. Hernan M. Giralt 22, CABA',
             parking: 'Si',
             bathrooms: 'Si',
             hours: '24hs',
@@ -37,7 +37,7 @@ const LOCATIONS = [
         lon: -58.537828,
         details: {
             image: coheloImage,
-            address: 'Del Arca 400',
+            address: 'Del Arca 400, San Fernando',
             parking: 'Gratuito',
             bathrooms: 'Si',
             hours: '8hs a 00hs',
@@ -48,11 +48,11 @@ const LOCATIONS = [
 
     {
         name: 'Costanera de Zarate - Zarate',
-        lat: -34.0958,
-        lon: -59.0242,
+        lat: -34.10466,
+        lon: -59.00514,
         details: {
             image: costaneraZarateImage,
-            address: 'Costanera Luis Rocha, B2800 Zárate',
+            address: 'Costanera Luis Rocha 1859, Zárate',
             parking: 'Si',
             bathrooms: 'No',
             hours: '24hs',
@@ -66,7 +66,7 @@ const LOCATIONS = [
         lon: -58.4320,
         details: {
             image: costaneraImage,
-            address: 'Av. Costanera Rafael Obligado 6920',
+            address: 'Av. Costanera Rafael Obligado 6920, CABA',
             parking: 'Gratuito',
             bathrooms: 'No',
             hours: '24hs',
@@ -94,7 +94,7 @@ const LOCATIONS = [
         lon: -58.409459,
         details: {
             image: monumentoImage,
-            address: 'Av. Costanera Rafael Obligado 80',
+            address: 'Av. Costanera Rafael Obligado 80, CABA',
             parking: 'No',
             bathrooms: 'No',
             hours: '24hs',
@@ -104,8 +104,8 @@ const LOCATIONS = [
     },
     {
         name: 'Muelle de Martinez - Martinez',
-        lat: -34.494808,
-        lon: -58.516455,
+        lat: -34.485164,
+        lon: -58.481300,
         details: {
             image: muelleMartinezImage,
             address: 'Sebastián Elcano 2400, Martínez',
@@ -118,11 +118,11 @@ const LOCATIONS = [
     },
     {
         name: 'Parana y el Rio - Vte Lopez',
-        lat: -34.5228,
-        lon: -58.4778,
+        lat: -34.490045,
+        lon: -58.480329,
         details: {
             image: paranaImage,
-            address: 'Paraná 2, La Lucila.',
+            address: 'Paraná 1, La Lucila',
             parking: 'Si',
             bathrooms: 'Si',
             hours: '24hs',
@@ -132,11 +132,11 @@ const LOCATIONS = [
     },
     {
         name: 'Parque de los Niños - Nuñez',
-        lat: -34.526634,
-        lon: -58.457030,
+        lat: -34.529533,
+        lon: -58.455541,
         details: {
             image: parqueImage,
-            address: 'Av. Int. Cantilo y Av. Gral. Paz.',
+            address: 'Av. Int. Cantilo y Av. Gral. Paz, CABA',
             parking: 'Si',
             bathrooms: 'Si',
             hours: 'de 8hs a 19hs',
@@ -146,11 +146,11 @@ const LOCATIONS = [
     },
     {
         name: 'Pejerrey Club - Quilmes',
-        lat: -34.7242,
-        lon: -58.2608,
+        lat: -34.710321,
+        lon: -58.223348,
         details: {
             image: pejerreyImage,
-            address: 'Av. Cervantes, Av. Isidoro Iriarte - Quilmes',
+            address: 'Av. Isidoro Iriarte 1790, Quilmes',
             parking: 'Si',
             bathrooms: 'Si',
             hours: '24hs',
