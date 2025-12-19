@@ -27,8 +27,8 @@ const LOCATIONS = [
             parking: 'Si',
             bathrooms: 'Si',
             hours: '24hs',
-            bait: '-',
-            notes: 'Muelle privado.'
+            bait: 'Vendedor en la puerta',
+            notes: 'Club privado, se paga abono mensual.'
         }
     },
     {
@@ -38,10 +38,10 @@ const LOCATIONS = [
         details: {
             image: coheloImage,
             address: 'Del Arca 400, San Fernando',
-            parking: 'Gratuito',
+            parking: 'Si',
             bathrooms: 'Si',
             hours: '8hs a 00hs',
-            bait: 'Puesto fijo al ingresar',
+            bait: 'Puesto fijo en la entrada',
             notes: 'Pueden pedir permiso de pesca. Tiene juegos de plaza.'
         }
     },
@@ -56,7 +56,7 @@ const LOCATIONS = [
             parking: 'Si',
             bathrooms: 'No',
             hours: '24hs',
-            bait: '-',
+            bait: 'Vendedores ambulantes',
             notes: 'Se puede llegar en tren desde la estacion Villa Ballester.'
         }
     },
@@ -70,7 +70,7 @@ const LOCATIONS = [
             parking: 'Gratuito',
             bathrooms: 'No',
             hours: '24hs',
-            bait: 'Puesto LodeChimiPesca',
+            bait: 'Vendedores ambulantes',
             notes: 'Estacionar a 45° para evitar multas'
         }
     },
@@ -84,7 +84,7 @@ const LOCATIONS = [
             parking: 'Si',
             bathrooms: 'No',
             hours: '24hs',
-            bait: 'Vendedores Ambulantes',
+            bait: 'Vendedores ambulantes',
             notes: '-'
         }
     },
