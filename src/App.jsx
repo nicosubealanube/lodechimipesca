@@ -85,7 +85,7 @@ const LOCATIONS = [
             bathrooms: 'No',
             hours: '24hs',
             bait: 'Vendedores ambulantes',
-            notes: '-'
+            notes: 'Carteles de prohibido pescar, algunos pescan igual'
         }
     },
     {
@@ -99,7 +99,7 @@ const LOCATIONS = [
             bathrooms: 'No',
             hours: '24hs',
             bait: 'Vendedores Ambulantes',
-            notes: 'Pueden cruzar al Aeroparque para usar los baños.'
+            notes: 'Pueden cruzar a Aeroparque para usar los baños.'
         }
     },
     {
@@ -127,7 +127,7 @@ const LOCATIONS = [
             bathrooms: 'Si',
             hours: '24hs',
             bait: 'Vendedores Ambulantes',
-            notes: '-'
+            notes: 'Tiene baños químicos al lado de la reserva ecológica'
         }
     },
     {
