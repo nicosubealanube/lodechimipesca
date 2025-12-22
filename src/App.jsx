@@ -57,7 +57,7 @@ const LOCATIONS = [
             bathrooms: 'No',
             hours: '24hs',
             bait: 'Vendedores ambulantes',
-            notes: 'Se puede llegar en tren desde la estacion Villa Ballester.'
+            notes: 'Se puede llegar en tren desde la estación Villa Ballester.'
         }
     },
     {
@@ -80,7 +80,7 @@ const LOCATIONS = [
         lon: -58.591651,
         details: {
             image: relojImage,
-            address: 'Caupolican 195, Rincon de Milberg',
+            address: 'Caupolican 195, Rincón de Milberg',
             parking: 'Si',
             bathrooms: 'No',
             hours: '24hs',
@@ -89,7 +89,7 @@ const LOCATIONS = [
         }
     },
     {
-        name: 'Mon. a Colon - Aeroparque',
+        name: 'Mon. a Colón - Aeroparque',
         lat: -34.556746,
         lon: -58.409459,
         details: {
@@ -98,12 +98,12 @@ const LOCATIONS = [
             parking: 'No',
             bathrooms: 'No',
             hours: '24hs',
-            bait: 'Vendedores Ambulantes',
+            bait: 'Vendedores ambulantes',
             notes: 'Pueden cruzar a Aeroparque para usar los baños.'
         }
     },
     {
-        name: 'Muelle de Martinez - Martinez',
+        name: 'Muelle de Martínez - Martínez',
         lat: -34.485164,
         lon: -58.481300,
         details: {
@@ -126,7 +126,7 @@ const LOCATIONS = [
             parking: 'Si',
             bathrooms: 'Si',
             hours: '24hs',
-            bait: 'Vendedores Ambulantes',
+            bait: 'Vendedores ambulantes',
             notes: 'Tiene baños químicos al lado de la reserva ecológica'
         }
     },
@@ -140,7 +140,7 @@ const LOCATIONS = [
             parking: 'Si',
             bathrooms: 'Si',
             hours: 'de 8hs a 19hs',
-            bait: 'Vendedores Ambulantes',
+            bait: 'Vendedores ambulantes',
             notes: 'Baño público en el ingreso al frente del estacionamiento.'
         }
     },
@@ -154,8 +154,8 @@ const LOCATIONS = [
             parking: 'Si',
             bathrooms: 'Si',
             hours: '24hs',
-            bait: 'Vendedor Ambulante en la entrada.',
-            notes: 'Muelle privado, cobra entrada de $8.000 el día.'
+            bait: 'Vendedor ambulante en la entrada',
+            notes: 'Muelle privado, cobra entrada de $8.000 el día'
         }
     },
 ]
