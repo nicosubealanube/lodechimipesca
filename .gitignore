@@ -1,1 +1,6 @@
 node_modules
+android
+dist
+keys
+
+capacitor.config.ts

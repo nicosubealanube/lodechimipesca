@@ -4,6 +4,7 @@ import WeatherCard from './components/WeatherCard'
 import Footer from './components/Footer'
 import LocationInfoCard from './components/LocationInfoCard'
 import { getFishingPrediction } from './utils/fishingLogic'
+import { fetchWeatherWithFallback } from './utils/weatherService'
 
 import coheloImage from './assets/cohelo_san_fernando.png'
 import costaneraImage from './assets/costanera_norte.jpg'
@@ -187,18 +188,10 @@ function App() {
 
         setLoading(true)
         try {
-            // Open-Meteo API (Weather & Marine)
-            const [weatherResponse, marineResponse] = await Promise.all([
-                fetch(
-                    `https://api.open-meteo.com/v1/forecast?latitude=${location.lat}&longitude=${location.lon}&hourly=temperature_2m,surface_pressure,wind_speed_10m,wind_direction_10m,weather_code,is_day&forecast_days=3&timezone=auto`
-                ),
-                fetch(
-                    `https://marine-api.open-meteo.com/v1/marine?latitude=${location.lat}&longitude=${location.lon}&hourly=wave_height&forecast_days=3&timezone=auto`
-                )
-            ])
+            const data = await fetchWeatherWithFallback(location.lat, location.lon)
 
-            const weatherData = await weatherResponse.json()
-            const marineData = await marineResponse.json()
+            const weatherData = data
+            const marineData = { hourly: { wave_height: data.hourly.wave_height } } // Adapt structure if needed or just use returned data directly
 
             // Filter data for the selected day
             // Open-Meteo returns hourly data for all requested days in a single array
@@ -219,7 +212,7 @@ function App() {
                 wind_direction_10m: weatherData.hourly.wind_direction_10m.slice(startIndex, endIndex),
                 weather_code: weatherData.hourly.weather_code.slice(startIndex, endIndex),
                 is_day: weatherData.hourly.is_day.slice(startIndex, endIndex),
-                wave_height: marineData.hourly.wave_height ? marineData.hourly.wave_height.slice(startIndex, endIndex) : [],
+                wave_height: weatherData.hourly.wave_height ? weatherData.hourly.wave_height.slice(startIndex, endIndex) : [],
             }
 
             setWeatherData(hourlyData)
