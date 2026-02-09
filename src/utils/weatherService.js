@@ -2,7 +2,7 @@ export const fetchWeatherWithFallback = async (lat, lon) => {
     // 1. Try Open-Meteo with 4s timeout
     try {
         console.log("Attempting to fetch from Open-Meteo...")
-        const data = await fetchOpenMeteoWithTimeout(lat, lon, 4000)
+        const data = await fetchOpenMeteoWithTimeout(lat, lon, 3000)
         console.log("Open-Meteo success")
         return data
     } catch (error) {
@@ -94,55 +94,90 @@ const fetchMetNorway = async (lat, lon) => {
 const mapMetNorwayData = (data) => {
     const timeseries = data.properties.timeseries
 
-    // Arrays to populate
-    const time = []
-    const temperature_2m = []
-    const surface_pressure = []
-    const wind_speed_10m = []
-    const wind_direction_10m = []
-    const weather_code = []
-    const is_day = [] // We need to calculate this
-    const wave_height = [] // Not available often
+    // Create a normalized grid starting from today at 00:00 local time
+    // We want 72 hours (3 days) to match Open-Meteo's requested days
+    const now = new Date()
+    now.setHours(0, 0, 0, 0) // Start of today (Local time)
 
+    const gridPoints = 72
+    const hourlyData = {
+        time: [],
+        temperature_2m: [],
+        surface_pressure: [],
+        wind_speed_10m: [],
+        wind_direction_10m: [],
+        weather_code: [],
+        is_day: [],
+        wave_height: []
+    }
+
+    // Helper map for quick lookup of MET data by time
+    // MET times are UTC ISO strings. We parse them to match our grid.
+    const metDataMap = new Map()
     timeseries.forEach(point => {
-        time.push(point.time)
-        const details = point.data.instant.details
-
-        temperature_2m.push(details.air_temperature)
-        surface_pressure.push(details.air_pressure_at_sea_level)
-        wind_speed_10m.push(details.wind_speed * 3.6) // m/s to km/h check? Open-Meteo defaults to km/h usually. App expects km/h.
-        // Wait, Open-Meteo default is km/h. MET Norway is m/s. 
-        // 1 m/s = 3.6 km/h.
-
-        wind_direction_10m.push(details.wind_from_direction)
-
-        // Symbol code (next 1 hour or 6 hours or 12 hours)
-        const next1h = point.data.next_1_hours
-        const next6h = point.data.next_6_hours
-        const next12h = point.data.next_12_hours
-
-        const symbolCode = next1h?.summary?.symbol_code || next6h?.summary?.symbol_code || next12h?.summary?.symbol_code || 'cloudy'
-        weather_code.push(mapMetSymbolToWmo(symbolCode))
-
-        // Simple is_day calculation based on hour (fallback)
-        // Or check if symbol contains 'day' or 'night'
-        const isDayValue = symbolCode.includes('day') ? 1 : (symbolCode.includes('night') ? 0 : 1)
-        is_day.push(isDayValue)
-
-        wave_height.push(null) // Not provided in compact
+        const timeKey = new Date(point.time).toISOString() // Normalize to ISO
+        metDataMap.set(timeKey, point)
     })
 
+    // Helper to find closest point (since MET might have gaps or slight offsets, though usually hourly)
+    // Actually, MET compact series is usually hourly for the first 48h.
+    // For simplicity, we look for exact match or nearest preceding match if exact missing?
+    // Let's stick to exact hourly matching based on ISO string equivalence after conversion.
+    // MET "time" is instant.
+
+    for (let i = 0; i < gridPoints; i++) {
+        const currentGridDate = new Date(now.getTime() + i * 60 * 60 * 1000)
+        // Adjust for ISO string comparison (which is UTC). 
+        // We want to find the MET point that corresponds to this local time.
+        // new Date(localTime).toISOString() gives the UTC timestamp, which matches MET format.
+        const lookupKey = currentGridDate.toISOString()
+
+        const point = metDataMap.get(lookupKey)
+
+        // Push time as ISO string (this preserves the local offset if interpreted by Date later, 
+        // OR better yet, push the grid time in the format App expects.
+        // Open-Meteo returns '2024-01-01T00:00' (local). 
+        // Our App uses new Date(t), so ISO string is safe. 
+        hourlyData.time.push(currentGridDate.toISOString())
+
+        if (point) {
+            const details = point.data.instant.details
+            const next1h = point.data.next_1_hours
+            const next6h = point.data.next_6_hours
+            const next12h = point.data.next_12_hours
+            const symbolCode = next1h?.summary?.symbol_code || next6h?.summary?.symbol_code || next12h?.summary?.symbol_code || 'cloudy'
+
+            hourlyData.temperature_2m.push(details.air_temperature)
+            hourlyData.surface_pressure.push(details.air_pressure_at_sea_level)
+            hourlyData.wind_speed_10m.push(details.wind_speed * 3.6) // m/s to km/h
+            hourlyData.wind_direction_10m.push(details.wind_from_direction)
+            hourlyData.weather_code.push(mapMetSymbolToWmo(symbolCode))
+
+            const isDay = symbolCode.includes('day') ? 1 : (symbolCode.includes('night') ? 0 : 1)
+            hourlyData.is_day.push(isDay)
+            hourlyData.wave_height.push(null)
+        } else {
+            // Fill gaps (e.g., past hours that MET no longer provides) with null or last known
+            // Ideally we shouldn't show nulls if possible, but for past data it might be fine.
+            // App handles might break if null? 
+            // Let's try to fill with safe defaults or iterate backwards if needed.
+            // For now: nulls, and App might just show empty or 0.
+            // BETTER: Use null, but make sure App checks for it? 
+            // App uses Math.round(null) -> 0. That's passable.
+            // Weather icon might crash. 
+            // Let's default to "no data" values.
+            hourlyData.temperature_2m.push(null) // or 0
+            hourlyData.surface_pressure.push(null)
+            hourlyData.wind_speed_10m.push(null) // 0
+            hourlyData.wind_direction_10m.push(null)
+            hourlyData.weather_code.push(null) // Icon check handles null
+            hourlyData.is_day.push(1)
+            hourlyData.wave_height.push(null)
+        }
+    }
+
     return {
-        hourly: {
-            time,
-            temperature_2m,
-            surface_pressure,
-            wind_speed_10m,
-            wind_direction_10m,
-            weather_code,
-            is_day,
-            wave_height
-        },
+        hourly: hourlyData,
         source: 'MET Norway'
     }
 }

@@ -16,6 +16,8 @@ import parqueImage from './assets/parque_ninos.jpg'
 import asocArgPescaImage from './assets/asoc_arg_pesca.png'
 import muelleMartinezImage from './assets/muelle_martinez.png'
 import costaneraZarateImage from './assets/costanera_zarate.png'
+import islaPaulinoImage from './assets/isla_paulino.png'
+import puntaLaraImage from './assets/punta_lara.png'
 
 const LOCATIONS = [
     {
@@ -76,6 +78,20 @@ const LOCATIONS = [
         }
     },
     {
+        name: 'Costanera Punta Lara - P. Lara',
+        lat: -34.795840,
+        lon: -57.993586,
+        details: {
+            image: puntaLaraImage,
+            address: 'Av. Almte. Brown 6898',
+            parking: 'Si',
+            bathrooms: 'No',
+            hours: '24hs',
+            bait: 'Vendedores ambulantes',
+            notes: 'Tiene zonas con enganche, preguntar a los pescadores del lugar.'
+        }
+    },
+    {
         name: 'El Reloj - Tigre',
         lat: -34.407726,
         lon: -58.591651,
@@ -87,6 +103,20 @@ const LOCATIONS = [
             hours: '24hs',
             bait: 'Vendedores ambulantes',
             notes: 'Carteles de prohibido pescar, algunos pescan igual'
+        }
+    },
+    {
+        name: 'Isla Paulino - Berisso',
+        lat: -34.833993,
+        lon: -57.881121,
+        details: {
+            image: islaPaulinoImage,
+            address: 'Acceso Isla Santiago',
+            parking: 'Si',
+            bathrooms: 'No',
+            hours: 'Cruces a partir de las 7am',
+            bait: 'Si',
+            notes: 'Comprar carnada antes de cruzar a la Isla. Motos quedan en la casa del lanchero y autos frente a la casa de carnadas.'
         }
     },
     {
