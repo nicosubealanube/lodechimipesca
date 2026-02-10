@@ -186,7 +186,7 @@ const LOCATIONS = [
             bathrooms: 'Si',
             hours: '24hs',
             bait: 'Vendedor ambulante en la entrada',
-            notes: 'Muelle privado, cobra entrada de $8.000 el día'
+            notes: 'Muelle privado, cobra entrada de $12.000 el día'
         }
     },
 ]
