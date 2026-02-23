@@ -1,5 +1,5 @@
-
 import React from 'react'
+import { MapPin, Instagram, MessageCircle } from 'lucide-react'
 
 const LocationInfoCard = ({ location }) => {
     if (!location || !location.details) return null
@@ -16,14 +16,15 @@ const LocationInfoCard = ({ location }) => {
             <div className="location-details">
                 <h3 className="location-title">Información del Lugar</h3>
                 <ul className="location-info-list">
-                    <li>
+                    <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                         <strong>Dirección:</strong>{' '}
                         <a
                             href={`https://www.google.com/maps/search/?api=1&query=${location.lat},${location.lon}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            style={{ textDecoration: 'underline', color: 'inherit' }}
+                            style={{ textDecoration: 'underline', color: 'inherit', display: 'flex', alignItems: 'center', gap: '4px' }}
                         >
+                            <MapPin size={16} />
                             {details.address}
                         </a>
                     </li>
@@ -32,27 +33,29 @@ const LocationInfoCard = ({ location }) => {
                     <li><strong>Horario:</strong> {details.hours}</li>
                     <li><strong>Carnada:</strong> {details.bait}</li>
                     {details.instagram && (
-                        <li>
+                        <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             <strong>Instagram:</strong>{' '}
                             <a
                                 href={details.instagramUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                style={{ textDecoration: 'underline', color: 'inherit' }}
+                                style={{ textDecoration: 'underline', color: 'inherit', display: 'flex', alignItems: 'center', gap: '4px' }}
                             >
+                                <Instagram size={16} />
                                 {details.instagram}
                             </a>
                         </li>
                     )}
                     {details.whatsapp && (
-                        <li>
+                        <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             <strong>Administración:</strong>{' '}
                             <a
                                 href={details.whatsappUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                style={{ textDecoration: 'underline', color: 'inherit' }}
+                                style={{ textDecoration: 'underline', color: 'inherit', display: 'flex', alignItems: 'center', gap: '4px' }}
                             >
+                                <MessageCircle size={16} />
                                 {details.whatsapp}
                             </a>
                         </li>

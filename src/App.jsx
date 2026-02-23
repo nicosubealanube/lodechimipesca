@@ -22,6 +22,7 @@ import puntaLaraImage from './assets/punta_lara.png'
 import clubElAnzueloImage from './assets/club_el_anzuelo.png'
 
 const LOCATIONS = [
+    /*
     {
         name: 'Asoc. Arg. de Pesca - CABA',
         lat: -34.596830,
@@ -36,6 +37,7 @@ const LOCATIONS = [
             notes: 'Club privado, se paga abono mensual.'
         }
     },
+    */
     {
         name: 'Club El Anzuelo - Zarate',
         lat: -33.906770,
