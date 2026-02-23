@@ -3,6 +3,7 @@ import Header from './components/Header'
 import WeatherCard from './components/WeatherCard'
 import Footer from './components/Footer'
 import LocationInfoCard from './components/LocationInfoCard'
+import FishingReport from './components/FishingReport'
 import { getFishingPrediction } from './utils/fishingLogic'
 import { fetchWeatherWithFallback } from './utils/weatherService'
 
@@ -18,6 +19,7 @@ import muelleMartinezImage from './assets/muelle_martinez.png'
 import costaneraZarateImage from './assets/costanera_zarate.png'
 import islaPaulinoImage from './assets/isla_paulino.png'
 import puntaLaraImage from './assets/punta_lara.png'
+import clubElAnzueloImage from './assets/club_el_anzuelo.png'
 
 const LOCATIONS = [
     {
@@ -32,6 +34,24 @@ const LOCATIONS = [
             hours: '24hs',
             bait: 'Vendedor en la puerta',
             notes: 'Club privado, se paga abono mensual.'
+        }
+    },
+    {
+        name: 'Club El Anzuelo - Zarate',
+        lat: -33.906770,
+        lon: -58.934338,
+        details: {
+            image: clubElAnzueloImage,
+            address: 'Pje talavera km 112, Zárate',
+            parking: 'Gratuito',
+            bathrooms: 'Si, con ducha caliente 24hs',
+            hours: 'de 7hs a 22hs',
+            bait: 'Comprar sobre la ruta antes de llegar',
+            instagram: '@clubelanzuelo',
+            instagramUrl: 'https://www.instagram.com/clubelanzuelo',
+            whatsapp: '+54 9 11 2451‑6871',
+            whatsappUrl: 'https://wa.me/5491124516871',
+            notes: 'Club exclusivo para socios. Cuenta con Quinchos, heladeras, freezer y parrillas.'
         }
     },
     {
@@ -302,6 +322,8 @@ function App() {
                         <WeatherCard data={weatherData} />
                     </div>
                 )}
+
+                <FishingReport />
             </main>
             <Footer />
         </div >

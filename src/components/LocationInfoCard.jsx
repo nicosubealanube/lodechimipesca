@@ -31,6 +31,32 @@ const LocationInfoCard = ({ location }) => {
                     <li><strong>Baños:</strong> {details.bathrooms}</li>
                     <li><strong>Horario:</strong> {details.hours}</li>
                     <li><strong>Carnada:</strong> {details.bait}</li>
+                    {details.instagram && (
+                        <li>
+                            <strong>Instagram:</strong>{' '}
+                            <a
+                                href={details.instagramUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{ textDecoration: 'underline', color: 'inherit' }}
+                            >
+                                {details.instagram}
+                            </a>
+                        </li>
+                    )}
+                    {details.whatsapp && (
+                        <li>
+                            <strong>Administración:</strong>{' '}
+                            <a
+                                href={details.whatsappUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                style={{ textDecoration: 'underline', color: 'inherit' }}
+                            >
+                                {details.whatsapp}
+                            </a>
+                        </li>
+                    )}
                     <li><strong>Observaciones:</strong> {details.notes}</li>
                 </ul>
             </div>
