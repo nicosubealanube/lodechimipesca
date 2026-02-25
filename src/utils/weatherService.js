@@ -40,13 +40,15 @@ const fetchOpenMeteoWithTimeout = async (lat, lon, timeoutMs) => {
         ])
 
         if (!weatherResponse.ok) throw new Error(`Open-Meteo Weather error: ${weatherResponse.status}`)
-        // Marine API might fail for non-marine locations, we can optionalize it or treat as error. 
-        // For now, if marine fails, we proceed without it if possible, but Promise.all will reject.
-        // Let's stick to the user's current logic: both must succeed, or we fail.
-        if (!marineResponse.ok) throw new Error(`Open-Meteo Marine error: ${marineResponse.status}`)
 
         const weatherData = await weatherResponse.json()
-        const marineData = await marineResponse.json()
+
+        let marineData = {}
+        if (marineResponse.ok) {
+            marineData = await marineResponse.json()
+        } else {
+            console.warn(`Open-Meteo Marine API felló o no disponible para estas coordenadas (posiblemente zona interior): ${marineResponse.status}`)
+        }
 
         return mapOpenMeteoData(weatherData, marineData)
     } finally {

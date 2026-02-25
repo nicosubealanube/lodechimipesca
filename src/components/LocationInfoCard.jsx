@@ -50,7 +50,7 @@ const LocationInfoCard = ({ location }) => {
                         <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             <strong>Administración:</strong>{' '}
                             <a
-                                href={details.whatsappUrl}
+                                href={`${details.whatsappUrl}?text=${encodeURIComponent('Hola, vengo de la app de ChimiPesca y queria hacerte una consulta:')}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 style={{ textDecoration: 'underline', color: 'inherit', display: 'flex', alignItems: 'center', gap: '4px' }}

@@ -20,6 +20,7 @@ import costaneraZarateImage from './assets/costanera_zarate.png'
 import islaPaulinoImage from './assets/isla_paulino.png'
 import puntaLaraImage from './assets/punta_lara.png'
 import clubElAnzueloImage from './assets/club_el_anzuelo.png'
+import recreoKeidelImage from './assets/recreo_keidel.png'
 
 const LOCATIONS = [
     /*
@@ -54,6 +55,24 @@ const LOCATIONS = [
             whatsapp: '+54 9 11 2451‑6871',
             whatsappUrl: 'https://wa.me/5491124516871',
             notes: 'Club exclusivo para socios. Cuenta con Quinchos, heladeras, freezer y parrillas.'
+        }
+    },
+    {
+        name: 'Recreo Keidel - Zarate',
+        lat: -33.892698,
+        lon: -58.913481,
+        details: {
+            image: recreoKeidelImage,
+            address: 'ex Ruta 12 km 110, Zarate',
+            parking: 'si',
+            bathrooms: 'si',
+            hours: '--',
+            bait: 'Solo envasadas',
+            instagram: '@recreokeidel',
+            instagramUrl: 'https://www.instagram.com/recreokeidel',
+            whatsapp: '3487-470576',
+            whatsappUrl: 'https://wa.me/5493487470576',
+            notes: 'Camping familiar con pileta, bajada de lanchas y alquiler de cabañas y kayaks.'
         }
     },
     {
