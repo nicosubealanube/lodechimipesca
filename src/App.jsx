@@ -64,15 +64,15 @@ const LOCATIONS = [
         details: {
             image: recreoKeidelImage,
             address: 'ex Ruta 12 km 110, Zarate',
-            parking: 'si',
-            bathrooms: 'si',
-            hours: '--',
+            parking: 'Si',
+            bathrooms: 'Si',
+            hours: 'A partir de 6hs para pasar el dia',
             bait: 'Solo envasadas',
             instagram: '@recreokeidel',
             instagramUrl: 'https://www.instagram.com/recreokeidel',
             whatsapp: '3487-470576',
             whatsappUrl: 'https://wa.me/5493487470576',
-            notes: 'Camping familiar con pileta, bajada de lanchas y alquiler de cabañas y kayaks.'
+            notes: 'Camping familiar con pileta, bajada de lanchas, alquiler de cabañas y kayaks. Muelle de pesca de 300mts'
         }
     },
     {
