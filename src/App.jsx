@@ -21,6 +21,7 @@ import islaPaulinoImage from './assets/isla_paulino.png'
 import puntaLaraImage from './assets/punta_lara.png'
 import clubElAnzueloImage from './assets/club_el_anzuelo.png'
 import recreoKeidelImage from './assets/recreo_keidel.png'
+import usinaImage from './assets/usina.png'
 
 const LOCATIONS = [
     /*
@@ -158,6 +159,20 @@ const LOCATIONS = [
             hours: 'Cruces a partir de las 7am',
             bait: 'Si',
             notes: 'Comprar carnada antes de cruzar a la Isla. Motos quedan en la casa del lanchero y autos frente a la casa de carnadas.'
+        }
+    },
+    {
+        name: 'La Usina - CABA',
+        lat: -34.623449,
+        lon: -58.342192,
+        details: {
+            image: usinaImage,
+            address: 'Av. España 3091 1107, CABA',
+            parking: 'Si',
+            bathrooms: 'No',
+            hours: '24hs',
+            bait: 'No',
+            notes: 'El lugar es chico, llegar temprano. Puede ser considerado peligroso ir fuera de hora.'
         }
     },
     {
