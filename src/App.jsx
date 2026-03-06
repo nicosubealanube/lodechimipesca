@@ -242,7 +242,7 @@ const LOCATIONS = [
             bathrooms: 'Si',
             hours: '24hs',
             bait: 'Vendedor ambulante en la entrada',
-            notes: 'Muelle privado, cobra entrada de $12.000 el día'
+            notes: 'Muelle privado, cobra entrada por día: Adultos $15.000, menores de 16 años y jubilados $7000'
         }
     },
 ]
