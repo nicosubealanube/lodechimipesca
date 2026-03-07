@@ -22,6 +22,7 @@ import puntaLaraImage from './assets/punta_lara.png'
 import clubElAnzueloImage from './assets/club_el_anzuelo.png'
 import recreoKeidelImage from './assets/recreo_keidel.png'
 import usinaImage from './assets/usina.png'
+import salgueroImage from './assets/salguero.png'
 
 const LOCATIONS = [
     /*
@@ -103,6 +104,20 @@ const LOCATIONS = [
             hours: '24hs',
             bait: 'Vendedores ambulantes',
             notes: 'Se puede llegar en tren desde la estación Villa Ballester.'
+        }
+    },
+    {
+        name: 'Costa Salguero - CABA',
+        lat: -34.569207,
+        lon: -58.394677,
+        details: {
+            image: salgueroImage,
+            address: 'Av. Costanera Rafael Obligado 1221, CABA',
+            parking: 'Si',
+            bathrooms: 'No',
+            hours: '24hs',
+            bait: 'Vendedores Ambulantes',
+            notes: 'Tirando a más de 10mts el fondo es mas arenoso. Puede ser considerado peligroso ir fuera de hora.'
         }
     },
     {
