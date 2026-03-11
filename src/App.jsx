@@ -24,6 +24,7 @@ import recreoKeidelImage from './assets/recreo_keidel.png'
 import usinaImage from './assets/usina.png'
 import salgueroImage from './assets/salguero.png'
 import sanisidroImage from './assets/sanisidro.png'
+import olivosImage from './assets/olivos.png'
 
 const LOCATIONS = [
     /*
@@ -273,6 +274,24 @@ const LOCATIONS = [
             hours: '24hs',
             bait: 'No hay vendedores',
             notes: 'Si hay bajante de agua es muy playo y merma la pesca.'
+        }
+    },
+    {
+        name: 'Club de Pescadores de Olivos - Olivos',
+        lat: -34.504086,
+        lon: -58.476206,
+        details: {
+            image: olivosImage,
+            address: 'Juan Bautista Alberdi 102, Olivos',
+            parking: 'Libre en el Puerto de Olivos',
+            bathrooms: 'Damas, Caballeros y para personas con Discapacidad. Sin ducha.',
+            hours: 'Todos los dias, 24hs',
+            bait: 'Venta tercerizada, no todos los días.',
+            instagram: '@club_de_pescadores_olivos',
+            instagramUrl: 'https://www.instagram.com/club_de_pescadores_olivos',
+            whatsapp: '15-2701-5875',
+            whatsappUrl: 'https://wa.me/5491127015875',
+            notes: 'Club privado con muelle de 270 mts. Refugios con baños. Quincho calefaccionado, parrillas, horno pizzero y solárium.'
         }
     },
 ]
