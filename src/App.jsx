@@ -23,6 +23,7 @@ import clubElAnzueloImage from './assets/club_el_anzuelo.png'
 import recreoKeidelImage from './assets/recreo_keidel.png'
 import usinaImage from './assets/usina.png'
 import salgueroImage from './assets/salguero.png'
+import sanisidroImage from './assets/sanisidro.png'
 
 const LOCATIONS = [
     /*
@@ -116,7 +117,7 @@ const LOCATIONS = [
             parking: 'Si',
             bathrooms: 'No',
             hours: '24hs',
-            bait: 'Vendedores Ambulantes',
+            bait: 'Vendedores ambulantes',
             notes: 'Tirando a más de 10mts el fondo es mas arenoso. Puede ser considerado peligroso ir fuera de hora.'
         }
     },
@@ -229,7 +230,7 @@ const LOCATIONS = [
             bathrooms: 'Si',
             hours: '24hs',
             bait: 'Vendedores ambulantes',
-            notes: 'Tiene baños químicos al lado de la reserva ecológica'
+            notes: 'Tiene baños al lado de la reserva ecológica'
         }
     },
     {
@@ -241,7 +242,7 @@ const LOCATIONS = [
             address: 'Av. Int. Cantilo y Av. Gral. Paz, CABA',
             parking: 'Si',
             bathrooms: 'Si',
-            hours: 'de 8hs a 19hs',
+            hours: 'de Martes a Domingo de 8hs a 19hs',
             bait: 'Vendedores ambulantes',
             notes: 'Baño público en el ingreso al frente del estacionamiento.'
         }
@@ -258,6 +259,20 @@ const LOCATIONS = [
             hours: '24hs',
             bait: 'Vendedor ambulante en la entrada',
             notes: 'Muelle privado, cobra entrada por día: Adultos $15.000, menores de 16 años y jubilados $7000'
+        }
+    },
+    {
+        name: 'Puerto de San Isidro - San Isidro',
+        lat: -34.461874,
+        lon: -58.505888,
+        details: {
+            image: sanisidroImage,
+            address: 'Cam. de la Ribera Nte. 1075, San Isidro',
+            parking: 'Si',
+            bathrooms: 'No',
+            hours: '24hs',
+            bait: 'No hay vendedores',
+            notes: 'Si hay bajante de agua es muy playo y merma la pesca.'
         }
     },
 ]
