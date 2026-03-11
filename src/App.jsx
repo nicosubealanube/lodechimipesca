@@ -44,6 +44,24 @@ const LOCATIONS = [
     },
     */
     {
+        name: 'Club de Pescadores de Olivos - Olivos',
+        lat: -34.504086,
+        lon: -58.476206,
+        details: {
+            image: olivosImage,
+            address: 'Juan Bautista Alberdi 102, Olivos',
+            parking: 'Libre en el Puerto de Olivos',
+            bathrooms: 'Damas, Caballeros y para personas con Discapacidad. Sin ducha.',
+            hours: 'Todos los dias, 24hs',
+            bait: 'Venta tercerizada, no todos los días.',
+            instagram: '@club_de_pescadores_olivos',
+            instagramUrl: 'https://www.instagram.com/club_de_pescadores_olivos',
+            whatsapp: '15-2701-5875',
+            whatsappUrl: 'https://wa.me/5491127015875',
+            notes: 'Club privado con muelle de 270 mts. Refugios con baños. Quincho calefaccionado, parrillas, horno pizzero y solárium.'
+        }
+    },
+    {
         name: 'Club El Anzuelo - Zarate',
         lat: -33.906770,
         lon: -58.934338,
@@ -93,21 +111,6 @@ const LOCATIONS = [
             notes: 'Pueden pedir permiso de pesca. Tiene juegos de plaza.'
         }
     },
-
-    {
-        name: 'Costanera de Zarate - Zarate',
-        lat: -34.10466,
-        lon: -59.00514,
-        details: {
-            image: costaneraZarateImage,
-            address: 'Costanera Luis Rocha 1859, Zárate',
-            parking: 'Si',
-            bathrooms: 'No',
-            hours: '24hs',
-            bait: 'Vendedores ambulantes',
-            notes: 'Se puede llegar en tren desde la estación Villa Ballester.'
-        }
-    },
     {
         name: 'Costa Salguero - CABA',
         lat: -34.569207,
@@ -120,6 +123,20 @@ const LOCATIONS = [
             hours: '24hs',
             bait: 'Vendedores ambulantes',
             notes: 'Tirando a más de 10mts el fondo es mas arenoso. Puede ser considerado peligroso ir fuera de hora.'
+        }
+    },
+    {
+        name: 'Costanera de Zarate - Zarate',
+        lat: -34.10466,
+        lon: -59.00514,
+        details: {
+            image: costaneraZarateImage,
+            address: 'Costanera Luis Rocha 1859, Zárate',
+            parking: 'Si',
+            bathrooms: 'No',
+            hours: '24hs',
+            bait: 'Vendedores ambulantes',
+            notes: 'Se puede llegar en tren desde la estación Villa Ballester.'
         }
     },
     {
@@ -275,25 +292,7 @@ const LOCATIONS = [
             bait: 'No hay vendedores',
             notes: 'Si hay bajante de agua es muy playo y merma la pesca.'
         }
-    },
-    {
-        name: 'Club de Pescadores de Olivos - Olivos',
-        lat: -34.504086,
-        lon: -58.476206,
-        details: {
-            image: olivosImage,
-            address: 'Juan Bautista Alberdi 102, Olivos',
-            parking: 'Libre en el Puerto de Olivos',
-            bathrooms: 'Damas, Caballeros y para personas con Discapacidad. Sin ducha.',
-            hours: 'Todos los dias, 24hs',
-            bait: 'Venta tercerizada, no todos los días.',
-            instagram: '@club_de_pescadores_olivos',
-            instagramUrl: 'https://www.instagram.com/club_de_pescadores_olivos',
-            whatsapp: '15-2701-5875',
-            whatsappUrl: 'https://wa.me/5491127015875',
-            notes: 'Club privado con muelle de 270 mts. Refugios con baños. Quincho calefaccionado, parrillas, horno pizzero y solárium.'
-        }
-    },
+    }
 ]
 
 const getFormattedDate = (offset) => {
