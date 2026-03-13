@@ -1,22 +1,16 @@
 :root {
-  /* Retro Sunset Palette - Light Mode */
-  --primary-color: #D94E3B;
-  /* Reddish - Kept */
-  --secondary-color: #E68A45;
-  /* Orange - Kept */
-  --accent-color: #D98E04;
-  /* Darker Yellow for visibility on white */
-  --background-overlay: rgba(255, 255, 255, 0.9);
-  /* Light overlay */
-  --text-primary: #1a1a1a;
-  /* Dark Gray */
-  --text-secondary: #4b5563;
-  /* Medium Gray */
-  --glass-bg: rgba(255, 255, 255, 0.85);
-  /* Light glass */
-  /* Warm dark glass */
-  --glass-border: rgba(242, 192, 94, 0.3);
-  /* Yellowish border */
+  /* Nautical & Vintage Palette (Wood/Parchment/Teal) */
+  --primary-color: #D35400; /* Burned Orange/Rust */
+  --secondary-color: #1E4E4E; /* Deep Nautical Teal */
+  --accent-color: #DE9B3A; /* Vintage Gold/Brass */
+  --background-overlay: rgba(30, 30, 30, 0.4); /* Darker overlay for wood contrast if needed */
+  --text-primary: #0A0A0A; /* Pure Black-ish for absolute maximum contrast */
+  --text-secondary: #2B2B2B; /* Darker Gray for secondary text */
+  --glass-bg: #FCFDFEF2; /* Extremely light, bright almost-white beige */
+  --glass-border: #E0D5C1; /* Lighter vintage border matching the beige */
+  --inner-glass-bg: #FFFFFF; /* Pure white bg for maximum reading contrast on inner items */
+  --inner-glass-border: #E5E7EB; /* Smoother, lighter border matching the bright inner card */
+  --inner-border: rgba(0, 0, 0, 0.05);
 }
 
 * {
@@ -27,8 +21,10 @@
 
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background: linear-gradient(135deg, #f5f5f5, #ffffff);
-  /* Light gradient */
+  background-image: url('/wood-bg.png'); /* The generated nautical wood texture */
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
   color: var(--text-primary);
   min-height: 100vh;
   line-height: 1.5;
@@ -53,14 +49,28 @@ body {
 /* Controls */
 .controls {
   background: var(--glass-bg);
-  backdrop-filter: blur(10px);
+  /* Vintage parchment look instead of glass */
+  backdrop-filter: none;
   border: 1px solid var(--glass-border);
-  border-radius: 16px;
+  border-radius: 8px; /* Slightly less rounded for vintage look */
   padding: 24px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: 
+    0 4px 6px -1px rgba(0, 0, 0, 0.4), /* Outer shadow on wood */
+    inset 0 0 20px rgba(0, 0, 0, 0.05); /* Inner vintage vignette */
+  position: relative;
+}
+
+/* Optional double border effect for nautical cards */
+.controls::before, .weather-card::before, .fishing-report-card::before, .footer::before {
+  content: '';
+  position: absolute;
+  top: 4px; left: 4px; right: 4px; bottom: 4px;
+  border: 1px solid var(--inner-border);
+  border-radius: 4px;
+  pointer-events: none;
 }
 
 .control-group {
@@ -77,38 +87,42 @@ label {
 
 select {
   appearance: none;
-  background-color: rgba(0, 0, 0, 0.2);
-  border: 1px solid var(--glass-border);
-  border-radius: 8px;
+  background-color: var(--inner-glass-bg);
+  border: 1px solid var(--inner-glass-border); 
+  border-radius: 6px;
   padding: 12px;
   color: var(--text-primary);
   font-size: 1rem;
   width: 100%;
   cursor: pointer;
   transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02); 
 }
 
 select:focus {
   outline: none;
-  border-color: var(--primary-color);
-  box-shadow: 0 0 0 2px rgba(14, 165, 233, 0.2);
+  border-color: var(--secondary-color); /* Teal focus */
+  box-shadow: 0 0 0 2px rgba(30, 78, 78, 0.2), inset 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .primary-button {
-  background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+  background: linear-gradient(to bottom, #E67E22, #D35400); /* Slightly raised gradient */
   color: white;
-  border: none;
+  border: 1px solid #993D00;
   padding: 14px;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: bold;
   cursor: pointer;
-  transition: transform 0.1s, opacity 0.2s;
+  transition: all 0.1s;
   margin-top: 8px;
+  text-shadow: 0px 1px 2px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 0 #993D00, 0 5px 5px rgba(0,0,0,0.3); /* Push-button effect */
 }
 
 .primary-button:active {
-  transform: scale(0.98);
+  transform: translateY(4px);
+  box-shadow: 0 0px 0 #993D00, 0 1px 2px rgba(0,0,0,0.3);
 }
 
 .primary-button:disabled {
@@ -130,11 +144,13 @@ select:focus {
 
 .weather-card {
   background: var(--glass-bg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: none;
   border: 1px solid var(--glass-border);
-  border-radius: 16px;
+  border-radius: 8px;
   padding: 20px;
   overflow-x: auto;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 0, 0, 0.05);
+  position: relative;
 }
 
 .hourly-scroll {
@@ -152,10 +168,12 @@ select:focus {
   align-items: center;
   gap: 16px;
   padding: 16px;
-  background: rgba(0, 0, 0, 0.03);
+  background: var(--inner-glass-bg);
+  border: 1px solid var(--inner-glass-border); 
   border-radius: 12px;
   width: 100%;
   /* Full width for vertical list */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
 }
 
 .time {
@@ -234,43 +252,45 @@ select:focus {
   }
 }
 
-/* Header Styles */
 .header {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 32px;
+  margin-top: 16px;
 }
 
 .logo-container {
-  width: 160px;
-  height: 160px;
+  width: 180px;
+  height: 180px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  /* Circle shape */
   overflow: hidden;
-  /* Mask corners */
-  background: white;
+  background: transparent; /* Assuming the logo has a built in background */
   padding: 0;
-  /* No padding so image fills circle */
-  border: 4px solid var(--accent-color);
-  /* Thicker border */
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  /* Dark teal border, perhaps not needed since logo has border, but looks good holding it */
+  border: 2px solid var(--text-primary); 
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6); /* Heavy shadow to pop off wood */
+  transition: transform 0.3s ease;
+}
+
+.logo-container:hover {
+  transform: scale(1.02);
 }
 
 .app-logo {
-  width: 90%;
-  height: 90%;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* Warnings */
 .hour-item.warning {
   border: 2px solid #ef4444;
   /* Red border */
-  background: rgba(239, 68, 68, 0.1);
+  background: #FFF0F0; /* Lighter red (100% solid) for absolute contrast */
   /* Red tint */
   position: relative;
 }
@@ -295,7 +315,7 @@ select:focus {
 .hour-item.good-pressure-bg {
   border-right: 4px solid #10b981;
   /* Green accent on right */
-  background: linear-gradient(to right, rgba(255, 255, 255, 0.05), rgba(16, 185, 129, 0.1));
+  background: linear-gradient(to right, var(--inner-glass-bg), rgba(16, 185, 129, 0.15));
 }
 
 
@@ -305,21 +325,23 @@ select:focus {
   margin-top: 32px;
   padding: 24px;
   background: var(--glass-bg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: none;
   border: 1px solid var(--glass-border);
-  border-radius: 16px;
+  border-radius: 8px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 0, 0, 0.05);
+  position: relative;
 }
 
 .footer-text {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--text-primary);
   line-height: 1.5;
+  font-weight: 500;
 }
 
 .footer-text strong {
@@ -387,14 +409,14 @@ select:focus {
 
 /* Location Info Card */
 .location-card {
-  background: var(--glass-bg);
-  backdrop-filter: blur(10px);
+  background: var(--glass-bg); /* Use the exact same globally defined beige color */
+  backdrop-filter: none;
   border: 1px solid var(--glass-border);
-  border-radius: 16px;
+  border-radius: 8px;
   overflow: hidden;
   margin-top: 16px;
-  /* Space between controls and card (or just place it in flow) */
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 0, 0, 0.05); /* Outer shadow matching controls */
+  position: relative;
 }
 
 .location-image-container {
@@ -419,8 +441,9 @@ select:focus {
 }
 
 .location-title {
-  font-size: 1.2rem;
-  color: var(--primary-color);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--secondary-color);
   margin-bottom: 12px;
   border-bottom: 2px solid var(--glass-border);
   padding-bottom: 8px;
@@ -443,12 +466,13 @@ select:focus {
 /* Fishing Report Card */
 .fishing-report-card {
   background: var(--glass-bg);
-  backdrop-filter: blur(10px);
+  backdrop-filter: none;
   border: 1px solid var(--glass-border);
-  border-radius: 16px;
+  border-radius: 8px;
   padding: 16px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease;
+  position: relative;
 }
 
 .fishing-report-card:hover {
@@ -462,15 +486,16 @@ select:focus {
   gap: 16px;
   text-decoration: none;
   color: inherit;
-  background: rgba(255, 255, 255, 0.4);
+  background: var(--inner-glass-bg);
   padding: 12px;
   border-radius: 12px;
-  border: 1px solid transparent;
+  border: 1px solid var(--inner-glass-border);
   transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
 }
 
 .video-link-row:hover {
-  background: rgba(255, 255, 255, 0.7);
+  background: #F9FAFB; /* Very light subtle gray to show interaction against white bg */
   border-color: var(--primary-color);
 }
 
