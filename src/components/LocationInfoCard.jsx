@@ -16,16 +16,16 @@ const LocationInfoCard = ({ location }) => {
             <div className="location-details">
                 <h3 className="location-title">Información del Lugar</h3>
                 <ul className="location-info-list">
-                    <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <li className="info-item-with-link">
                         <strong>Dirección:</strong>{' '}
                         <a
                             href={`https://www.google.com/maps/search/?api=1&query=${location.lat},${location.lon}`}
                             target="_blank"
                             rel="noopener noreferrer"
-                            style={{ textDecoration: 'underline', color: 'inherit', display: 'flex', alignItems: 'center', gap: '4px' }}
+                            className="info-link"
                         >
-                            <MapPin size={16} />
-                            {details.address}
+                            <MapPin size={16} className="info-icon" />
+                            <span className="info-link-text">{details.address}</span>
                         </a>
                     </li>
                     <li><strong>Estacionamiento:</strong> {details.parking}</li>
@@ -33,30 +33,30 @@ const LocationInfoCard = ({ location }) => {
                     <li><strong>Horario:</strong> {details.hours}</li>
                     <li><strong>Carnada:</strong> {details.bait}</li>
                     {details.instagram && (
-                        <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <li className="info-item-with-link">
                             <strong>Instagram:</strong>{' '}
                             <a
                                 href={details.instagramUrl}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                style={{ textDecoration: 'underline', color: 'inherit', display: 'flex', alignItems: 'center', gap: '4px' }}
+                                className="info-link"
                             >
-                                <Instagram size={16} />
-                                {details.instagram}
+                                <Instagram size={16} className="info-icon" />
+                                <span className="info-link-text">{details.instagram}</span>
                             </a>
                         </li>
                     )}
                     {details.whatsapp && (
-                        <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                        <li className="info-item-with-link">
                             <strong>Administración:</strong>{' '}
                             <a
                                 href={`${details.whatsappUrl}?text=${encodeURIComponent('Hola, vengo de la app de ChimiPesca y queria hacerte una consulta:')}`}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                style={{ textDecoration: 'underline', color: 'inherit', display: 'flex', alignItems: 'center', gap: '4px' }}
+                                className="info-link"
                             >
-                                <MessageCircle size={16} />
-                                {details.whatsapp}
+                                <MessageCircle size={16} className="info-icon" />
+                                <span className="info-link-text">{details.whatsapp}</span>
                             </a>
                         </li>
                     )}

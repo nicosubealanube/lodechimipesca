@@ -463,6 +463,33 @@ select:focus {
   margin-right: 6px;
 }
 
+.info-item-with-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.info-link {
+  text-decoration: underline;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 100%;
+}
+
+.info-icon {
+  flex-shrink: 0;
+  margin-top: 2px; /* Slight adjustment since align-items is flex-start on parent */
+}
+
+.info-link-text {
+  font-size: 0.85rem;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
 /* Fishing Report Card */
 .fishing-report-card {
   background: var(--glass-bg);
