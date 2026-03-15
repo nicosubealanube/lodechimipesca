@@ -44,7 +44,7 @@ const LOCATIONS = [
     },
     */
     {
-        name: 'Club de Pescadores de Olivos - Olivos',
+        name: 'Club de Pescadores Olivos - Olivos',
         lat: -34.504086,
         lon: -58.476206,
         details: {
