@@ -195,9 +195,10 @@ select:focus {
 }
 
 .details {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  row-gap: 12px;
+  column-gap: 8px;
   font-size: 0.8rem;
   color: var(--text-secondary);
   text-align: center;
@@ -237,8 +238,7 @@ select:focus {
     grid-column: 1 / -1;
     /* Span full width */
     grid-row: 2;
-    justify-content: space-between;
-    /* Spread items */
+    grid-template-columns: repeat(2, 1fr);
     gap: 8px;
     padding-top: 8px;
     border-top: 1px solid rgba(0, 0, 0, 0.05);

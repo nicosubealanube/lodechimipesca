@@ -43,6 +43,11 @@ export default function Footer() {
             <p style={{ fontSize: '0.7rem', marginTop: '10px', opacity: 0.7 }}>
                 App desarrollada por lodechimipesca y nicosubealanube ®
             </p>
+            <p style={{ fontSize: '0.7rem', marginTop: '5px', opacity: 0.7 }}>
+                <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
+                    Datos meteorológicos por Open-Meteo.com
+                </a>
+            </p>
         </footer>
     )
 }

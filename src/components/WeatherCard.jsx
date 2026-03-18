@@ -1,4 +1,5 @@
 import React from 'react'
+import TideInfo from './TideInfo'
 import {
     Sun, Moon, Cloud, CloudRain, CloudLightning,
     CloudSnow, CloudDrizzle, CloudFog, Wind,
@@ -25,7 +26,7 @@ const getWindDirection = (degrees) => {
 }
 
 
-export default function WeatherCard({ data }) {
+export default function WeatherCard({ data, lat, lon }) {
     if (!data) return null
 
     return (
@@ -90,15 +91,7 @@ export default function WeatherCard({ data }) {
                                         <div className="detail-good-text" style={{ color: 'var(--text-secondary)', fontWeight: 'normal' }}>Olas</div>
                                     </div>
                                 )}
-                                {tideHeight !== null && (
-                                    <div className="detail-item">
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                                            <Droplets size={16} />
-                                            <span>{tideHeight.toFixed(1)} m {tideTrend}</span>
-                                        </div>
-                                        <div className="detail-good-text" style={{ color: 'var(--text-secondary)', fontWeight: 'normal' }}>Marea</div>
-                                    </div>
-                                )}
+                                <TideInfo lat={lat} lon={lon} timeIso={t} />
                             </div>
                         </div>
                     )

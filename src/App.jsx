@@ -27,7 +27,7 @@ import sanisidroImage from './assets/sanisidro.png'
 import olivosImage from './assets/olivos.png'
 
 const LOCATIONS = [
-    /*
+
     {
         name: 'Asoc. Arg. de Pesca - CABA',
         lat: -34.596830,
@@ -39,10 +39,14 @@ const LOCATIONS = [
             bathrooms: 'Si',
             hours: '24hs',
             bait: 'Vendedor en la puerta',
+            instagram: '@aapesca',
+            instagramUrl: 'https://www.instagram.com/aapesca',
+            whatsapp: '111111111',
+            whatsappUrl: 'https://wa.me/11111111',
             notes: 'Club privado, se paga abono mensual.'
         }
     },
-    */
+
     {
         name: 'Club de Pescadores Olivos - Olivos',
         lat: -34.504086,
@@ -403,7 +407,7 @@ function App() {
                         <div className="prediction-banner">
                             {getFishingPrediction(weatherData)}
                         </div>
-                        <WeatherCard data={weatherData} />
+                        <WeatherCard data={weatherData} lat={location.lat} lon={location.lon} />
                     </div>
                 )}
 
