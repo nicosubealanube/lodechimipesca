@@ -67,14 +67,24 @@ export default function TideInfo({ lat, lon, timeIso }) {
     let statusText = '';
     let isUp = true;
 
-    // Detect peaks using local maxima/minima
-    if (currentHeight > prevHeight && currentHeight >= nextHeight) {
+    // Detect peaks using a robust +/- 5 hours window to filter out estuarian noise and meteorological tides
+    let isLocalMax = true;
+    let isLocalMin = true;
+
+    for (let i = Math.max(0, targetIndex - 5); i <= Math.min(tideData.length - 1, targetIndex + 5); i++) {
+        if (i !== targetIndex) {
+            if (tideData[i] > rawCurrentHeight) isLocalMax = false;
+            if (tideData[i] < rawCurrentHeight) isLocalMin = false;
+        }
+    }
+
+    if (isLocalMax) {
         statusText = 'Alta';
         isUp = true;
-    } else if (currentHeight < prevHeight && currentHeight <= nextHeight) {
+    } else if (isLocalMin) {
         statusText = 'Baja';
         isUp = false;
-    } else if (currentHeight >= prevHeight) {
+    } else if (rawCurrentHeight >= tideData[Math.max(0, targetIndex - 1)]) {
         statusText = 'Subiendo';
         isUp = true;
     } else {
