@@ -43,15 +43,26 @@ export default function TideInfo({ lat, lon, timeIso }) {
 
     if (error || !tideData || !tideTimes) return null;
 
-    const targetTime = new Date(timeIso).getTime();
+    // Shift the requested time forward by 3 hours to fetch delayed Open Meteo data
+    // because global models lack the Rio de la Plata 3h estuary penetration delay.
+    const TIME_SHIFT_MS = 3 * 60 * 60 * 1000;
+    const targetTime = new Date(timeIso).getTime() + TIME_SHIFT_MS;
     const targetIndex = tideTimes.findIndex(t => new Date(t).getTime() === targetTime);
     if (targetIndex === -1) return null;
 
-    const currentHeight = tideData[targetIndex];
-    if (currentHeight === undefined || currentHeight === null) return null;
+    // Adjust Mean Sea Level (0.0) to Lowest Astronomical Tide (LAT) positive scale
+    const DATUM_OFFSET = 1.29;
 
-    const prevHeight = targetIndex > 0 ? tideData[targetIndex - 1] : currentHeight;
-    const nextHeight = targetIndex < tideData.length - 1 ? tideData[targetIndex + 1] : currentHeight;
+    const rawCurrentHeight = tideData[targetIndex];
+    if (rawCurrentHeight === undefined || rawCurrentHeight === null) return null;
+
+    const currentHeight = rawCurrentHeight + DATUM_OFFSET;
+
+    const rawPrevHeight = targetIndex > 0 ? tideData[targetIndex - 1] : rawCurrentHeight;
+    const prevHeight = rawPrevHeight + DATUM_OFFSET;
+
+    const rawNextHeight = targetIndex < tideData.length - 1 ? tideData[targetIndex + 1] : rawCurrentHeight;
+    const nextHeight = rawNextHeight + DATUM_OFFSET;
 
     let statusText = '';
     let isUp = true;
