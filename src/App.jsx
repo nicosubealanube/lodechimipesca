@@ -25,6 +25,7 @@ import usinaImage from './assets/usina.png'
 import salgueroImage from './assets/salguero.png'
 import sanisidroImage from './assets/sanisidro.png'
 import olivosImage from './assets/olivos.png'
+import campanaImage from './assets/campana.jpg'
 
 const LOCATIONS = [
 
@@ -127,6 +128,20 @@ const LOCATIONS = [
             hours: '24hs',
             bait: 'Vendedores ambulantes',
             notes: 'Tirando a más de 10mts el fondo es mas arenoso. Puede ser considerado peligroso ir fuera de hora.'
+        }
+    },
+    {
+        name: 'Costanera de Campana - Campana',
+        lat: -34.155136,
+        lon: -58.959322,
+        details: {
+            image: campanaImage,
+            address: 'Paseo Cmte. M. J. Escola, Campana',
+            parking: 'Si',
+            bathrooms: 'Si',
+            hours: '24hs',
+            bait: 'Si, en el Campana Boat Club',
+            notes: 'Tiene plaza con juegos para chicos, y esta muy iluminado. Mucho enganche. El tren Villa Ballester - Zárate (estación Campana) te deja enfrente.'
         }
     },
     {
