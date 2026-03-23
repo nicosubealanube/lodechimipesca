@@ -6,7 +6,7 @@ export const fetchTideData = async (lat, lon) => {
     const key = `${lat}_${lon}`;
     if (tideCache[key]) return tideCache[key];
 
-    tideCache[key] = fetch(`/.netlify/functions/get-tides?lat=${lat}&lon=${lon}`)
+    tideCache[key] = fetch(`https://lodechimipesca.netlify.app/.netlify/functions/get-tides?lat=${lat}&lon=${lon}`)
         .then(async res => {
             if (!res.ok) throw new Error("API error");
             return res.json();
