@@ -14,7 +14,7 @@ import relojImage from './assets/reloj_tigre.png'
 import pejerreyImage from './assets/pejerrey_club.png'
 import paranaImage from './assets/parana_vte_lopez.png'
 import parqueImage from './assets/parque_ninos.jpg'
-import asocArgPescaImage from './assets/asoc_arg_pesca.png'
+// import asocArgPescaImage from './assets/asoc_arg_pesca.png'
 import muelleMartinezImage from './assets/muelle_martinez.png'
 import costaneraZarateImage from './assets/costanera_zarate.png'
 import islaPaulinoImage from './assets/isla_paulino.png'
@@ -29,6 +29,7 @@ import campanaImage from './assets/campana.jpg'
 
 const LOCATIONS = [
 
+    /*
     {
         name: 'Asoc. Arg. de Pesca - CABA',
         lat: -34.596830,
@@ -47,6 +48,7 @@ const LOCATIONS = [
             notes: 'Club privado, se paga abono mensual.'
         }
     },
+    */
 
     {
         name: 'Club de Pescadores Olivos - Olivos',
