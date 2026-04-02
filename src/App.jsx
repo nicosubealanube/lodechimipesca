@@ -259,7 +259,7 @@ const LOCATIONS = [
         }
     },
     {
-        name: 'Parana y el Rio - Vte Lopez',
+        name: 'Parana y el Rio - Vte Lopez (Prohibido)',
         lat: -34.490045,
         lon: -58.480329,
         details: {
@@ -269,7 +269,7 @@ const LOCATIONS = [
             bathrooms: 'Si',
             hours: '24hs',
             bait: 'Vendedores ambulantes',
-            notes: 'Tiene baños al lado de la reserva ecológica'
+            notes: 'Prohibida la pesca en el lugar por Ordenanza n37867, declarada reserva ecologica'
         }
     },
     {

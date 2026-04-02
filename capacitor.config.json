@@ -1,5 +1,10 @@
 {
   "appId": "com.nicosubealanube.pescadoresba",
   "appName": "ChimiPesca",
-  "webDir": "dist"
+  "webDir": "dist",
+  "plugins": {
+    "CapacitorHttp": {
+      "enabled": true
+    }
+  }
 }

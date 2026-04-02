@@ -5,6 +5,11 @@ exports.handler = async function (event, context) {
     if (!lat || !lon) {
         return {
             statusCode: 400,
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Methods": "GET, OPTIONS"
+            },
             body: JSON.stringify({ error: "Missing lat or lon parameters" })
         };
     }
@@ -22,6 +27,9 @@ exports.handler = async function (event, context) {
             statusCode: 200,
             headers: {
                 "Content-Type": "application/json",
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Methods": "GET, OPTIONS",
                 // Enable edge caching
                 "Cache-Control": "public, max-age=3600"
             },
@@ -31,6 +39,11 @@ exports.handler = async function (event, context) {
         console.error("Error fetching tide data:", error);
         return {
             statusCode: 500,
+            headers: {
+                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Headers": "Content-Type",
+                "Access-Control-Allow-Methods": "GET, OPTIONS"
+            },
             body: JSON.stringify({ error: "Failed to fetch tide data from Open-Meteo" })
         };
     }
