@@ -26,6 +26,7 @@ import salgueroImage from './assets/salguero.png'
 import sanisidroImage from './assets/sanisidro.png'
 import olivosImage from './assets/olivos.png'
 import campanaImage from './assets/campana.jpg'
+import saladoImage from './assets/salado.png'
 
 const LOCATIONS = [
 
@@ -101,7 +102,7 @@ const LOCATIONS = [
             instagramUrl: 'https://www.instagram.com/recreokeidel',
             whatsapp: '3487-470576',
             whatsappUrl: 'https://wa.me/5493487470576',
-            notes: 'Camping familiar con pileta, bajada de lanchas, alquiler de cabañas y kayaks. Muelle de pesca de 300mts'
+            notes: 'Camping familiar con pileta, bajada de lanchas, alquiler de cabañas y kayaks. Muelle de pesca de 300mts.'
         }
     },
     {
@@ -171,7 +172,7 @@ const LOCATIONS = [
             bathrooms: 'No',
             hours: '24hs',
             bait: 'Vendedores ambulantes',
-            notes: 'Estacionar a 45° para evitar multas'
+            notes: 'Estacionar a 45° para evitar multas. Se puede usar el baño del Museo de la Memoria.'
         }
     },
     {
@@ -199,7 +200,7 @@ const LOCATIONS = [
             bathrooms: 'No',
             hours: '24hs',
             bait: 'Vendedores ambulantes',
-            notes: 'Carteles de prohibido pescar, algunos pescan igual'
+            notes: 'Carteles de prohibido pescar, algunos pescan igual. Buena pesca nocturna, cuando baja la circulación de lanchas.'
         }
     },
     {
@@ -269,7 +270,7 @@ const LOCATIONS = [
             bathrooms: 'Si',
             hours: '24hs',
             bait: 'Vendedores ambulantes',
-            notes: 'Prohibida la pesca en el lugar por Ordenanza n37867, declarada reserva ecologica'
+            notes: 'Prohibida la pesca en el lugar por Ordenanza n37867, declarada reserva ecologica.'
         }
     },
     {
@@ -297,7 +298,7 @@ const LOCATIONS = [
             bathrooms: 'Si',
             hours: '24hs',
             bait: 'Vendedor ambulante en la entrada',
-            notes: 'Muelle privado, cobra entrada por día: Adultos $15.000, menores de 16 años y jubilados $7000'
+            notes: 'Muelle privado, cobra entrada por día: Adultos $15.000, menores de 16 años y jubilados $7000.'
         }
     },
     {
@@ -312,6 +313,20 @@ const LOCATIONS = [
             hours: '24hs',
             bait: 'No hay vendedores',
             notes: 'Si hay bajante de agua es muy playo y merma la pesca.'
+        }
+    },
+    {
+        name: 'Río Salado - Roque Perez',
+        lat: -35.373012,
+        lon: -59.279228,
+        details: {
+            image: saladoImage,
+            address: 'Puente De Madera, Roque Perez',
+            parking: 'Si',
+            bathrooms: 'No',
+            hours: '24hs',
+            bait: 'No hay vendedores. Llevar o comprar en la ruta.',
+            notes: 'Buen lugar para la pesca de carpas. No hay reparo, llevar todo lo posible para autoabastecerse.'
         }
     }
 ]
