@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Fondo blanco -->
+    <item android:drawable="@android:color/white" />
+
+    <!-- Reducimos a 100dp para asegurar que NO se recorte en ningún dispositivo -->
+    <item
+        android:drawable="@drawable/logo_chimi"
+        android:gravity="center"
+        android:width="100dp"
+        android:height="100dp" />
+</layer-list>

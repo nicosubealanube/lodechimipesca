@@ -41,7 +41,7 @@ export default function Footer() {
                 Si la info de la app te sirvió y queres colaborar con los desarrolladores para mejorarla, podes hacer una donación voluntaria al siguiente link: <strong><a href="https://link.mercadopago.com.ar/lodechimipesca" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>link.mercadopago.com.ar/lodechimipesca</a></strong>
             </p>
             <p style={{ fontSize: '0.7rem', marginTop: '10px', marginBottom: '4px', opacity: 0.7 }}>
-                App desarrollada por lodechimipesca y nicosubealanube ®
+                App desarrollada por Chimi Pesca y nicosubealanube ®
             </p>
             <p style={{ fontSize: '0.7rem', marginTop: '0', opacity: 0.7 }}>
                 <a href="https://open-meteo.com/" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'none' }}>
