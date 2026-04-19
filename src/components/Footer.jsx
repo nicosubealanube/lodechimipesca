@@ -38,7 +38,7 @@ export default function Footer() {
                 </a>
             </div>
             <p style={{ fontSize: '0.8rem', marginTop: '20px', textAlign: 'center', maxWidth: '80%' }}>
-                Si la info de la app te sirvió y queres colaborar con los desarrolladores para mejorarla, podes hacer una donación voluntaria al siguiente link: <strong><a href="https://link.mercadopago.com.ar/lodechimipesca" target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline' }}>link.mercadopago.com.ar/lodechimipesca</a></strong>
+                Si la info de la app te sirvió y queres colaborar con los desarrolladores para mejorarla, podes hacer una donación voluntaria al siguiente alias: <strong>lodechimipesca</strong>
             </p>
             <p style={{ fontSize: '0.7rem', marginTop: '10px', marginBottom: '4px', opacity: 0.7 }}>
                 App desarrollada por Chimi Pesca y nicosubealanube ®

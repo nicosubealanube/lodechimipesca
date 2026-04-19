@@ -14,7 +14,7 @@ import relojImage from './assets/reloj_tigre.png'
 import pejerreyImage from './assets/pejerrey_club.png'
 import paranaImage from './assets/parana_vte_lopez.png'
 import parqueImage from './assets/parque_ninos.jpg'
-// import asocArgPescaImage from './assets/asoc_arg_pesca.png'
+import asocArgPescaImage from './assets/asoc_arg_pesca.png'
 import muelleMartinezImage from './assets/muelle_martinez.png'
 import costaneraZarateImage from './assets/costanera_zarate.png'
 import islaPaulinoImage from './assets/isla_paulino.png'
@@ -30,9 +30,9 @@ import saladoImage from './assets/salado.png'
 
 const LOCATIONS = [
 
-    /*
+
     {
-        name: 'Asoc. Arg. de Pesca - CABA',
+        name: 'Asoc. Argentina de Pesca - CABA',
         lat: -34.596830,
         lon: -58.362605,
         details: {
@@ -41,15 +41,14 @@ const LOCATIONS = [
             parking: 'Si',
             bathrooms: 'Si',
             hours: '24hs',
-            bait: 'Vendedor en la puerta',
+            bait: 'Vendedor externo en la entrada',
             instagram: '@aapesca',
             instagramUrl: 'https://www.instagram.com/aapesca',
-            whatsapp: '111111111',
-            whatsappUrl: 'https://wa.me/11111111',
-            notes: 'Club privado, se paga abono mensual.'
+            phone: '11 4311-4625',
+            phoneUrl: 'tel:+5491143114625',
+            notes: 'Institución referente de la pesca deportiva que cuenta con un muelle de 730 metros sobre el Río de la Plata y un predio de valor histórico. Ofrece infraestructura completa con refugios y seguridad, además de organizar escuelas de pesca y torneos competitivos en un entorno exclusivo para socios.'
         }
     },
-    */
 
     {
         name: 'Club de Pescadores Olivos - Olivos',

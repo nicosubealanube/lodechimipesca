@@ -1,5 +1,5 @@
 import React from 'react'
-import { MapPin, Instagram, MessageCircle } from 'lucide-react'
+import { MapPin, Instagram, MessageCircle, Phone } from 'lucide-react'
 
 const LocationInfoCard = ({ location }) => {
     if (!location || !location.details) return null
@@ -57,6 +57,18 @@ const LocationInfoCard = ({ location }) => {
                             >
                                 <MessageCircle size={16} className="info-icon" />
                                 <span className="info-link-text">{details.whatsapp}</span>
+                            </a>
+                        </li>
+                    )}
+                    {details.phone && (
+                        <li className="info-item-with-link">
+                            <strong>Administración:</strong>{' '}
+                            <a
+                                href={details.phoneUrl}
+                                className="info-link"
+                            >
+                                <Phone size={16} className="info-icon" />
+                                <span className="info-link-text">{details.phone}</span>
                             </a>
                         </li>
                     )}
