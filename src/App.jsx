@@ -27,6 +27,9 @@ import sanisidroImage from './assets/sanisidro.png'
 import olivosImage from './assets/olivos.png'
 import campanaImage from './assets/campana.jpg'
 import saladoImage from './assets/salado.png'
+import clubPescadoresImage from './assets/club_pescadores.png'
+import ribs2Image from './assets/ribs2.png'
+import ribsmapImage from './assets/ribsmap.png'
 
 const LOCATIONS = [
 
@@ -49,6 +52,26 @@ const LOCATIONS = [
             notes: 'Institución referente de la pesca deportiva que cuenta con un muelle de 730 metros sobre el Río de la Plata y un predio de valor histórico. Ofrece infraestructura completa con refugios y seguridad, además de organizar escuelas de pesca y torneos competitivos en un entorno exclusivo para socios.'
         }
     },
+/*
+    {
+        name: 'Club de Pescadores de Bs As - CABA',
+        lat: -34.563167,
+        lon: -58.403300,
+        details: {
+            image: clubPescadoresImage,
+            address: 'Av. Rafael Obligado s/Nº y Av. Sarmiento, CABA',
+            parking: 'Si',
+            bathrooms: 'Si',
+            hours: '24hs',
+            bait: 'Punto de venta en la entrada',
+            instagram: '@clubdepescadores',
+            instagramUrl: 'https://www.instagram.com/clubdepescadores',
+            whatsapp: '11-4039-3533',
+            whatsappUrl: 'https://wa.me/5491140393533',
+            notes: 'Institución centenaria y Monumento Histórico Nacional que se erige sobre el Río de la Plata con su icónico edificio de estilo belga. Ofrece un muelle de 500 metros con servicios completos, refugios y gastronomía de primer nivel, consolidándose como el epicentro de la pesca deportiva y la vida social en la Ciudad de Buenos Aires.'
+        }
+    },
+*/
 
     {
         name: 'Club de Pescadores Olivos - Olivos',
@@ -166,6 +189,7 @@ const LOCATIONS = [
         lon: -58.4320,
         details: {
             image: costaneraImage,
+            additionalImages: [ribs2Image, ribsmapImage],
             address: 'Av. Costanera Rafael Obligado 6920, CABA',
             parking: 'Gratuito',
             bathrooms: 'No',
