@@ -21,6 +21,8 @@ import aap2Image from './assets/aap2.jpg'
 import aapmapsImage from './assets/aapmaps.jpg'
 import muelleMartinezImage from './assets/muelle_martinez.png'
 import costaneraZarateImage from './assets/costanera_zarate.png'
+import zarate2Image from './assets/zarate2.jpg'
+import zaratemapsImage from './assets/zaratemaps.jpg'
 import islaPaulinoImage from './assets/isla_paulino.png'
 import puntaLaraImage from './assets/punta_lara.png'
 import clubElAnzueloImage from './assets/club_el_anzuelo.png'
@@ -31,11 +33,15 @@ import keidel2Image from './assets/keidel2.jpg'
 import keidelmapsImage from './assets/keidelmaps.jpg'
 import usinaImage from './assets/usina.png'
 import salgueroImage from './assets/salguero.png'
+import salguero2Image from './assets/salguero2.jpg'
+import salgueromapsImage from './assets/salgueromaps.jpg'
 import sanisidroImage from './assets/sanisidro.png'
 import olivosImage from './assets/olivos.png'
 import olivos2Image from './assets/olivos2.jpg'
 import olivosmapsImage from './assets/olivosmaps.jpg'
 import campanaImage from './assets/campana.jpg'
+import campana2Image from './assets/campana2.jpg'
+import campanamapsImage from './assets/campanamaps.jpg'
 import saladoImage from './assets/salado.png'
 import clubPescadoresImage from './assets/club_pescadores.png'
 import ribs2Image from './assets/ribs2.jpg'
@@ -162,6 +168,7 @@ const LOCATIONS = [
         lon: -58.394677,
         details: {
             image: salgueroImage,
+            additionalImages: [salguero2Image, salgueromapsImage],
             address: 'Av. Costanera Rafael Obligado 1221, CABA',
             parking: 'Si',
             bathrooms: 'No',
@@ -176,6 +183,7 @@ const LOCATIONS = [
         lon: -58.959322,
         details: {
             image: campanaImage,
+            additionalImages: [campana2Image, campanamapsImage],
             address: 'Paseo Cmte. M. J. Escola, Campana',
             parking: 'Si',
             bathrooms: 'Si',
@@ -190,6 +198,7 @@ const LOCATIONS = [
         lon: -59.00514,
         details: {
             image: costaneraZarateImage,
+            additionalImages: [zarate2Image, zaratemapsImage],
             address: 'Costanera Luis Rocha 1859, Zárate',
             parking: 'Si',
             bathrooms: 'No',
