@@ -28,8 +28,8 @@ import olivosImage from './assets/olivos.png'
 import campanaImage from './assets/campana.jpg'
 import saladoImage from './assets/salado.png'
 import clubPescadoresImage from './assets/club_pescadores.png'
-import ribs2Image from './assets/ribs2.png'
-import ribsmapImage from './assets/ribsmap.png'
+import ribs2Image from './assets/ribs2.jpg'
+import ribsmapImage from './assets/ribsmap.jpg'
 
 const LOCATIONS = [
 

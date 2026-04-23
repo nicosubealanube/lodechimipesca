@@ -15,14 +15,6 @@ const LocationInfoCard = ({ location }) => {
         setCurrentImageIndex(0)
     }, [location.name])
 
-    useEffect(() => {
-        if (allImages.length <= 1) return
-        const interval = setInterval(() => {
-            setCurrentImageIndex(prev => (prev + 1) % allImages.length)
-        }, 5000)
-        return () => clearInterval(interval)
-    }, [allImages.length, location.name])
-
     const nextImage = () => {
         setCurrentImageIndex(prev => (prev + 1) % allImages.length)
     }
@@ -81,15 +73,6 @@ const LocationInfoCard = ({ location }) => {
                             <button className="carousel-btn next-btn" onClick={nextImage} aria-label="Siguiente imagen">
                                 <ChevronRight size={24} />
                             </button>
-                            <div className="carousel-dots">
-                                {allImages.map((_, idx) => (
-                                    <div 
-                                        key={idx} 
-                                        className={`carousel-dot ${idx === currentImageIndex ? 'active' : ''}`}
-                                        onClick={() => setCurrentImageIndex(idx)}
-                                    />
-                                ))}
-                            </div>
                         </>
                     )}
                 </div>
