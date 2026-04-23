@@ -8,6 +8,8 @@ import { getFishingPrediction } from './utils/fishingLogic'
 import { fetchWeatherWithFallback } from './utils/weatherService'
 
 import coheloImage from './assets/cohelo_san_fernando.png'
+import cohelo2Image from './assets/cohelo2.jpg'
+import cohelomapsImage from './assets/cohelomaps.jpg'
 import costaneraImage from './assets/costanera_norte.jpg'
 import monumentoImage from './assets/monumento_colon.png'
 import relojImage from './assets/reloj_tigre.png'
@@ -15,16 +17,24 @@ import pejerreyImage from './assets/pejerrey_club.png'
 import paranaImage from './assets/parana_vte_lopez.png'
 import parqueImage from './assets/parque_ninos.jpg'
 import asocArgPescaImage from './assets/asoc_arg_pesca.png'
+import aap2Image from './assets/aap2.jpg'
+import aapmapsImage from './assets/aapmaps.jpg'
 import muelleMartinezImage from './assets/muelle_martinez.png'
 import costaneraZarateImage from './assets/costanera_zarate.png'
 import islaPaulinoImage from './assets/isla_paulino.png'
 import puntaLaraImage from './assets/punta_lara.png'
 import clubElAnzueloImage from './assets/club_el_anzuelo.png'
+import anzuelo2Image from './assets/anzuelo2.jpg'
+import anzuelomapsImage from './assets/anzuelomaps.jpg'
 import recreoKeidelImage from './assets/recreo_keidel.png'
+import keidel2Image from './assets/keidel2.jpg'
+import keidelmapsImage from './assets/keidelmaps.jpg'
 import usinaImage from './assets/usina.png'
 import salgueroImage from './assets/salguero.png'
 import sanisidroImage from './assets/sanisidro.png'
 import olivosImage from './assets/olivos.png'
+import olivos2Image from './assets/olivos2.jpg'
+import olivosmapsImage from './assets/olivosmaps.jpg'
 import campanaImage from './assets/campana.jpg'
 import saladoImage from './assets/salado.png'
 import clubPescadoresImage from './assets/club_pescadores.png'
@@ -40,6 +50,7 @@ const LOCATIONS = [
         lon: -58.362605,
         details: {
             image: asocArgPescaImage,
+            additionalImages: [aap2Image, aapmapsImage],
             address: 'Av. Int. Hernan M. Giralt 22, CABA',
             parking: 'Si',
             bathrooms: 'Si',
@@ -79,6 +90,7 @@ const LOCATIONS = [
         lon: -58.476206,
         details: {
             image: olivosImage,
+            additionalImages: [olivos2Image, olivosmapsImage],
             address: 'Juan Bautista Alberdi 102, Olivos',
             parking: 'Libre en el Puerto de Olivos',
             bathrooms: 'Damas, Caballeros y para personas con Discapacidad. Sin ducha.',
@@ -97,6 +109,7 @@ const LOCATIONS = [
         lon: -58.934338,
         details: {
             image: clubElAnzueloImage,
+            additionalImages: [anzuelo2Image, anzuelomapsImage],
             address: 'Pje talavera km 112, Zárate',
             parking: 'Gratuito',
             bathrooms: 'Si, con ducha caliente 24hs',
@@ -115,6 +128,7 @@ const LOCATIONS = [
         lon: -58.913481,
         details: {
             image: recreoKeidelImage,
+            additionalImages: [keidel2Image, keidelmapsImage],
             address: 'ex Ruta 12 km 110, Zarate',
             parking: 'Si',
             bathrooms: 'Si',
@@ -133,6 +147,7 @@ const LOCATIONS = [
         lon: -58.537828,
         details: {
             image: coheloImage,
+            additionalImages: [cohelo2Image, cohelomapsImage],
             address: 'Del Arca 400, San Fernando',
             parking: 'Si',
             bathrooms: 'Si',
