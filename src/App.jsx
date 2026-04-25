@@ -12,19 +12,35 @@ import cohelo2Image from './assets/cohelo2.jpg'
 import cohelomapsImage from './assets/cohelomaps.jpg'
 import costaneraImage from './assets/costanera_norte.jpg'
 import monumentoImage from './assets/monumento_colon.png'
+import colon2Image from './assets/colon2.jpg'
+import colonmapsImage from './assets/colonmaps.jpg'
 import relojImage from './assets/reloj_tigre.png'
+import reloj2Image from './assets/reloj2.jpg'
+import relojmapsImage from './assets/relojmaps.jpg'
 import pejerreyImage from './assets/pejerrey_club.png'
+import peje2Image from './assets/peje2.jpg'
+import pejemapsImage from './assets/pejemaps.jpg'
 import paranaImage from './assets/parana_vte_lopez.png'
+import parana2Image from './assets/parana2.jpg'
+import paranamapsImage from './assets/paranamaps.jpg'
 import parqueImage from './assets/parque_ninos.jpg'
+import ninos2Image from './assets/ninos2.jpg'
+import ninosmapsImage from './assets/ninosmaps.jpg'
 import asocArgPescaImage from './assets/asoc_arg_pesca.png'
 import aap2Image from './assets/aap2.jpg'
 import aapmapsImage from './assets/aapmaps.jpg'
 import muelleMartinezImage from './assets/muelle_martinez.png'
+import martinez2Image from './assets/martinez2.jpg'
+import martinezmapsImage from './assets/martinezmaps.jpg'
 import costaneraZarateImage from './assets/costanera_zarate.png'
 import zarate2Image from './assets/zarate2.jpg'
 import zaratemapsImage from './assets/zaratemaps.jpg'
 import islaPaulinoImage from './assets/isla_paulino.png'
+import paulino2Image from './assets/paulino2.jpg'
+import paulinomapsImage from './assets/paulinomaps.jpg'
 import puntaLaraImage from './assets/punta_lara.png'
+import lara2Image from './assets/lara2.jpg'
+import laramapsImage from './assets/laramaps.jpg'
 import clubElAnzueloImage from './assets/club_el_anzuelo.png'
 import anzuelo2Image from './assets/anzuelo2.jpg'
 import anzuelomapsImage from './assets/anzuelomaps.jpg'
@@ -32,10 +48,14 @@ import recreoKeidelImage from './assets/recreo_keidel.png'
 import keidel2Image from './assets/keidel2.jpg'
 import keidelmapsImage from './assets/keidelmaps.jpg'
 import usinaImage from './assets/usina.png'
+import usina2Image from './assets/usina2.jpg'
+import usinamapsImage from './assets/usinamaps.jpg'
 import salgueroImage from './assets/salguero.png'
 import salguero2Image from './assets/salguero2.jpg'
 import salgueromapsImage from './assets/salgueromaps.jpg'
 import sanisidroImage from './assets/sanisidro.png'
+import isidro2Image from './assets/isidro2.jpg'
+import isidromapsImage from './assets/isidromaps.jpg'
 import olivosImage from './assets/olivos.png'
 import olivos2Image from './assets/olivos2.jpg'
 import olivosmapsImage from './assets/olivosmaps.jpg'
@@ -43,6 +63,8 @@ import campanaImage from './assets/campana.jpg'
 import campana2Image from './assets/campana2.jpg'
 import campanamapsImage from './assets/campanamaps.jpg'
 import saladoImage from './assets/salado.png'
+import salado2Image from './assets/salado2.jpg'
+import saladomapsImage from './assets/saladomaps.jpg'
 import clubPescadoresImage from './assets/club_pescadores.png'
 import ribs2Image from './assets/ribs2.jpg'
 import ribsmapImage from './assets/ribsmap.jpg'
@@ -228,6 +250,7 @@ const LOCATIONS = [
         lon: -57.993586,
         details: {
             image: puntaLaraImage,
+            additionalImages: [lara2Image, laramapsImage],
             address: 'Av. Almte. Brown 6898',
             parking: 'Si',
             bathrooms: 'No',
@@ -242,6 +265,7 @@ const LOCATIONS = [
         lon: -58.591651,
         details: {
             image: relojImage,
+            additionalImages: [reloj2Image, relojmapsImage],
             address: 'Caupolican 195, Rincón de Milberg',
             parking: 'Si',
             bathrooms: 'No',
@@ -256,6 +280,7 @@ const LOCATIONS = [
         lon: -57.881121,
         details: {
             image: islaPaulinoImage,
+            additionalImages: [paulino2Image, paulinomapsImage],
             address: 'Acceso Isla Santiago',
             parking: 'Si',
             bathrooms: 'No',
@@ -270,6 +295,7 @@ const LOCATIONS = [
         lon: -58.342192,
         details: {
             image: usinaImage,
+            additionalImages: [usina2Image, usinamapsImage],
             address: 'Av. España 3091 1107, CABA',
             parking: 'Si',
             bathrooms: 'No',
@@ -284,6 +310,7 @@ const LOCATIONS = [
         lon: -58.409459,
         details: {
             image: monumentoImage,
+            additionalImages: [colon2Image, colonmapsImage],
             address: 'Av. Costanera Rafael Obligado 80, CABA',
             parking: 'No',
             bathrooms: 'No',
@@ -298,6 +325,7 @@ const LOCATIONS = [
         lon: -58.481300,
         details: {
             image: muelleMartinezImage,
+            additionalImages: [martinez2Image, martinezmapsImage],
             address: 'Sebastián Elcano 2400, Martínez',
             parking: 'Si',
             bathrooms: 'No',
@@ -312,6 +340,7 @@ const LOCATIONS = [
         lon: -58.480329,
         details: {
             image: paranaImage,
+            additionalImages: [parana2Image, paranamapsImage],
             address: 'Paraná 1, La Lucila',
             parking: 'Si',
             bathrooms: 'Si',
@@ -326,6 +355,7 @@ const LOCATIONS = [
         lon: -58.455541,
         details: {
             image: parqueImage,
+            additionalImages: [ninos2Image, ninosmapsImage],
             address: 'Av. Int. Cantilo y Av. Gral. Paz, CABA',
             parking: 'Si',
             bathrooms: 'Si',
@@ -340,6 +370,7 @@ const LOCATIONS = [
         lon: -58.223348,
         details: {
             image: pejerreyImage,
+            additionalImages: [peje2Image, pejemapsImage],
             address: 'Av. Isidoro Iriarte 1790, Quilmes',
             parking: 'Si',
             bathrooms: 'Si',
@@ -354,6 +385,7 @@ const LOCATIONS = [
         lon: -58.505888,
         details: {
             image: sanisidroImage,
+            additionalImages: [isidro2Image, isidromapsImage],
             address: 'Cam. de la Ribera Nte. 1075, San Isidro',
             parking: 'Si',
             bathrooms: 'No',
@@ -368,6 +400,7 @@ const LOCATIONS = [
         lon: -59.279228,
         details: {
             image: saladoImage,
+            additionalImages: [salado2Image, saladomapsImage],
             address: 'Puente De Madera, Roque Perez',
             parking: 'Si',
             bathrooms: 'No',
