@@ -78,7 +78,9 @@ const LocationInfoCard = ({ location, activeSubLocation, setActiveSubLocation })
             <div className="location-details">
                 <div className="location-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px', borderBottom: '2px solid var(--glass-border)', paddingBottom: '8px' }}>
                     <h3 className="location-title" style={{ borderBottom: 'none', marginBottom: 0, paddingBottom: 0 }}>
-                        {currentLocation.name === location.name ? 'Información del Lugar' : 'Sede Ibicuy'}
+                        {currentLocation.name !== location.name 
+                            ? 'Sede Ibicuy' 
+                            : (location.subLocation ? 'Sede Olivos' : 'Información del Lugar')}
                     </h3>
                     {location.subLocation && currentLocation.name === location.name && (
                         <button className="primary-button" style={{ padding: '8px 12px', fontSize: '0.85rem', marginTop: 0 }} onClick={() => { setActiveSubLocation(location.subLocation); setCurrentImageIndex(0); }}>
