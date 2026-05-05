@@ -60,6 +60,9 @@ import isidromapsImage from './assets/isidromaps.jpg'
 import olivosImage from './assets/olivos.png'
 import olivos2Image from './assets/olivos2.jpg'
 import olivosmapsImage from './assets/olivosmaps.jpg'
+import sedeibicuyImage from './assets/sedeibicuy.png'
+import ibicuy2Image from './assets/ibicuy2.png'
+import ibicuymapsImage from './assets/ibicuymaps.png'
 import campanaImage from './assets/campana.jpg'
 import campana2Image from './assets/campana2.jpg'
 import campanamapsImage from './assets/campanamaps.jpg'
@@ -130,6 +133,24 @@ const LOCATIONS = [
             whatsapp: '15-2701-5875',
             whatsappUrl: 'https://wa.me/5491127015875',
             notes: 'Club privado con muelle de 270 mts. Refugios con baños. Quincho calefaccionado, parrillas, horno pizzero y solárium. Buffet exclusivo para socios con servicio de delivery al muelle de Martes a Viernes de 11hs a 22hs y Sábados, Domingos y Feriados de 9:30hs a 22hs.'
+        },
+        subLocation: {
+            name: 'Sede Ibicuy, Entre Ríos',
+            lat: -33.795704,
+            lon: -59.174026,
+            details: {
+                image: sedeibicuyImage,
+                additionalImages: [ibicuy2Image, ibicuymapsImage],
+                address: 'Camino del Pavon S/N, Ibicuy',
+                googleMapsUrl: 'https://www.google.com/maps/place/Club+de+Pescadores+Olivos+sede+Ibicuy/@-33.7956558,-59.172545,21z/data=!4m6!3m5!1s0x95ba54600c789441:0x3b26e967ceeeefc2!8m2!3d-33.7956039!4d-59.1723633!16s%2Fg%2F11c6pv5wdc?entry=ttu&g_ep=EgoyMDI2MDQyOS4wIKXMDSoASAFQAw%3D%3D',
+                parking: 'Si',
+                bathrooms: 'Si, externos',
+                hours: 'Para pasar el dia, de 8hs a 20hs',
+                bait: 'No',
+                whatsapp: '15-2701-5875',
+                whatsappUrl: 'https://wa.me/5491127015875',
+                notes: 'Muelle iluminado de 100m. Cuenta con 5 fogones sobre la costa, quincho cubierto con 4 parrillas, comedor con heladeras/freezer y baños externos. Hay alojamiento disponible (habitaciones y un departamento), pero las reservas se hacen exclusivamente en la sede de Olivos (no se permite ir y decidir quedarse en el momento). La tranquera cierra a las 20hs.'
+            }
         }
     },
     {
@@ -427,19 +448,22 @@ const DATES = [
 
 function App() {
     const [location, setLocation] = useState(null)
+    const [activeSubLocation, setActiveSubLocation] = useState(null)
     const [dateOffset, setDateOffset] = useState(DATES[0].value)
     const [weatherData, setWeatherData] = useState(null)
     const [loading, setLoading] = useState(false)
 
+    const activeLocationToUse = activeSubLocation || location
+
     const fetchWeather = async () => {
-        if (!location) {
+        if (!activeLocationToUse) {
             alert("Por favor selecciona una ubicación.")
             return
         }
 
         setLoading(true)
         try {
-            const data = await fetchWeatherWithFallback(location.lat, location.lon)
+            const data = await fetchWeatherWithFallback(activeLocationToUse.lat, activeLocationToUse.lon)
 
             const weatherData = data
             const marineData = { hourly: { wave_height: data.hourly.wave_height } } // Adapt structure if needed or just use returned data directly
@@ -485,7 +509,10 @@ function App() {
                         <label>¿Dónde vas a pescar?</label>
                         <select
                             value={location ? location.name : ""}
-                            onChange={(e) => setLocation(LOCATIONS.find(l => l.name === e.target.value))}
+                            onChange={(e) => {
+                                setLocation(LOCATIONS.find(l => l.name === e.target.value))
+                                setActiveSubLocation(null) // Reset sublocation on change
+                            }}
                         >
                             <option value="" disabled>Seleccione un lugar...</option>
                             {LOCATIONS.map(loc => (
@@ -495,7 +522,11 @@ function App() {
                     </div>
 
                     {location && location.details && (
-                        <LocationInfoCard location={location} />
+                        <LocationInfoCard 
+                            location={location} 
+                            activeSubLocation={activeSubLocation}
+                            setActiveSubLocation={setActiveSubLocation}
+                        />
                     )}
 
                     <div className="control-group">
@@ -520,7 +551,7 @@ function App() {
                         <div className="prediction-banner">
                             {getFishingPrediction(weatherData)}
                         </div>
-                        <WeatherCard data={weatherData} lat={location.lat} lon={location.lon} />
+                        <WeatherCard data={weatherData} lat={activeLocationToUse.lat} lon={activeLocationToUse.lon} />
                     </div>
                 )}
 

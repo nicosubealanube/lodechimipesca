@@ -15,7 +15,7 @@ export default function FishingLicense() {
                 </div>
                 <div className="video-info">
                     <span className="video-title">Obtenga su permiso de pesca de Buenos Aires</span>
-                    <span className="watch-now-text">Sacar permiso ahora ▶</span>
+                    <span className="watch-now-text">Toca aquí! ▶</span>
                 </div>
             </a>
         </div>

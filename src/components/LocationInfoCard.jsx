@@ -1,19 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { MapPin, Instagram, MessageCircle, Phone, ChevronLeft, ChevronRight } from 'lucide-react'
 
-const LocationInfoCard = ({ location }) => {
+const LocationInfoCard = ({ location, activeSubLocation, setActiveSubLocation }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
     const [touchStart, setTouchStart] = useState(null)
     const [touchEnd, setTouchEnd] = useState(null)
 
-    if (!location || !location.details) return null
+    const currentLocation = activeSubLocation || location
+    if (!currentLocation || !currentLocation.details) return null
 
-    const { details } = location
+    const { details } = currentLocation
     const allImages = details.additionalImages ? [details.image, ...details.additionalImages] : (details.image ? [details.image] : [])
-
-    useEffect(() => {
-        setCurrentImageIndex(0)
-    }, [location.name])
 
     const nextImage = () => {
         setCurrentImageIndex(prev => (prev + 1) % allImages.length)
@@ -60,7 +57,7 @@ const LocationInfoCard = ({ location }) => {
                     >
                         {allImages.map((img, idx) => (
                             <div key={idx} className="location-image-slide">
-                                <img src={img} alt={`${location.name} ${idx + 1}`} className="location-image" />
+                                <img src={img} alt={`${currentLocation.name} ${idx + 1}`} className="location-image" />
                             </div>
                         ))}
                     </div>
@@ -79,12 +76,26 @@ const LocationInfoCard = ({ location }) => {
             )}
             
             <div className="location-details">
-                <h3 className="location-title">Información del Lugar</h3>
+                <div className="location-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px', borderBottom: '2px solid var(--glass-border)', paddingBottom: '8px' }}>
+                    <h3 className="location-title" style={{ borderBottom: 'none', marginBottom: 0, paddingBottom: 0 }}>
+                        {currentLocation.name === location.name ? 'Información del Lugar' : 'Sede Ibicuy'}
+                    </h3>
+                    {location.subLocation && currentLocation.name === location.name && (
+                        <button className="primary-button" style={{ padding: '8px 12px', fontSize: '0.85rem', marginTop: 0 }} onClick={() => { setActiveSubLocation(location.subLocation); setCurrentImageIndex(0); }}>
+                            Ver Sede Ibicuy
+                        </button>
+                    )}
+                    {location.subLocation && currentLocation.name !== location.name && (
+                        <button className="primary-button" style={{ padding: '8px 12px', fontSize: '0.85rem', marginTop: 0 }} onClick={() => { setActiveSubLocation(null); setCurrentImageIndex(0); }}>
+                            Volver a Sede Olivos
+                        </button>
+                    )}
+                </div>
                 <ul className="location-info-list">
                     <li className="info-item-with-link">
                         <strong>Dirección:</strong>{' '}
                         <a
-                            href={`https://www.google.com/maps/search/?api=1&query=${location.lat},${location.lon}`}
+                            href={details.googleMapsUrl || `https://www.google.com/maps/search/?api=1&query=${currentLocation.lat},${currentLocation.lon}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="info-link"
