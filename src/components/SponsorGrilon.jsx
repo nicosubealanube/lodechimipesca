@@ -1,20 +1,20 @@
 import React from 'react';
 import { Facebook, Instagram } from 'lucide-react';
-import payoLogo from '../assets/payo_logo.png';
+import grilonLogo from '../assets/grilon_logo.png';
 
-export default function SponsorPayo() {
+export default function SponsorGrilon() {
     return (
         <div className="fishing-report-card" style={{ margin: '-8px 0' }}>
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                 <h3 className="location-title" style={{ margin: 0, padding: 0, fontSize: '0.85rem', textTransform: 'uppercase', letterSpacing: '2px', borderBottom: 'none', opacity: 0.8 }}>
-                    Productos Oficiales
+                    Sponsor Oficial
                 </h3>
                 <div style={{ display: 'flex', gap: '16px' }}>
                     <a 
-                        href="https://www.facebook.com/payoargentina" 
+                        href="https://www.facebook.com/grilon.pescaargentina" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        aria-label="Facebook Payo Argentina"
+                        aria-label="Facebook Grilon"
                         style={{ color: 'inherit', transition: 'opacity 0.2s', opacity: 0.7, padding: '8px', margin: '-8px 0' }}
                         onMouseEnter={(e) => e.currentTarget.style.opacity = 1}
                         onMouseLeave={(e) => e.currentTarget.style.opacity = 0.7}
@@ -22,10 +22,10 @@ export default function SponsorPayo() {
                         <Facebook size={26} />
                     </a>
                     <a 
-                        href="https://www.instagram.com/payo_argentina/" 
+                        href="https://www.instagram.com/grilon.pesca" 
                         target="_blank" 
                         rel="noopener noreferrer"
-                        aria-label="Instagram Payo Argentina"
+                        aria-label="Instagram Grilon"
                         style={{ color: 'inherit', transition: 'opacity 0.2s', opacity: 0.7, padding: '8px', margin: '-8px -8px -8px 0' }}
                         onMouseEnter={(e) => e.currentTarget.style.opacity = 1}
                         onMouseLeave={(e) => e.currentTarget.style.opacity = 0.7}
@@ -36,21 +36,21 @@ export default function SponsorPayo() {
             </div>
 
             <a
-                href="https://payoargentina.com"
+                href="https://grilonpesca.com.ar"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="video-link-row"
             >
                 <div style={{ width: '120px', height: '76px', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <img 
-                        src={payoLogo} 
-                        alt="Payo Argentina" 
-                        style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain', filter: 'brightness(0) opacity(0.8)' }} 
+                        src={grilonLogo} 
+                        alt="Grilon" 
+                        style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} 
                     />
                 </div>
                 <div className="video-info">
-                    <span className="video-title">Indumentaria y Artículos de Pesca</span>
-                    <span className="watch-now-text">Disfruta del aire libre... Payo te protege. ▶</span>
+                    <span className="video-title">La tanza Argentina</span>
+                    <span className="watch-now-text">Más de 70 años acompañando tu pasión por la pesca. ▶</span>
                 </div>
             </a>
         </div>

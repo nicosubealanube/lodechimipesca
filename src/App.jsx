@@ -4,7 +4,8 @@ import WeatherCard from './components/WeatherCard'
 import Footer from './components/Footer'
 import LocationInfoCard from './components/LocationInfoCard'
 import FishingReport from './components/FishingReport'
-import SponsorPayo from './components/SponsorPayo'
+// import SponsorPayo from './components/SponsorPayo'
+import SponsorGrilon from './components/SponsorGrilon'
 import FishingLicense from './components/FishingLicense'
 import { getFishingPrediction } from './utils/fishingLogic'
 import { fetchWeatherWithFallback } from './utils/weatherService'
@@ -557,7 +558,7 @@ function App() {
                 )}
 
                 <FishingReport />
-                <SponsorPayo />
+                <SponsorGrilon />
                 <FishingLicense />
             </main>
             <Footer />
