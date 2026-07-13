@@ -6,7 +6,8 @@ import LocationInfoCard from './components/LocationInfoCard'
 import FishingReport from './components/FishingReport'
 // import SponsorPayo from './components/SponsorPayo'
 // import SponsorGrilon from './components/SponsorGrilon'
-import PromoProde from './components/PromoProde'
+import SponsorSap from './components/SponsorSap'
+import FeriaCazaPesca from './components/FeriaCazaPesca'
 import FishingLicense from './components/FishingLicense'
 import { getFishingPrediction } from './utils/fishingLogic'
 import { fetchWeatherWithFallback } from './utils/weatherService'
@@ -559,8 +560,9 @@ function App() {
                 )}
 
                 <FishingReport />
+                <FeriaCazaPesca />
                 {/* <SponsorGrilon /> */}
-                <PromoProde />
+                <SponsorSap />
                 <FishingLicense />
             </main>
             <Footer />
