@@ -372,7 +372,7 @@ const LOCATIONS = [
             bathrooms: 'Si',
             hours: '24hs',
             bait: 'Vendedores ambulantes',
-            notes: 'Prohibida la pesca en el lugar por Ordenanza n37867, declarada reserva ecologica.'
+            notes: 'Luego de un tiempo prohibido, se puede volver a pescar en el lugar'
         }
     },
     {
@@ -526,8 +526,8 @@ function App() {
                     </div>
 
                     {location && location.details && (
-                        <LocationInfoCard 
-                            location={location} 
+                        <LocationInfoCard
+                            location={location}
                             activeSubLocation={activeSubLocation}
                             setActiveSubLocation={setActiveSubLocation}
                         />
