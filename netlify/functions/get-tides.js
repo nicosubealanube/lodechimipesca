@@ -1,5 +1,5 @@
 // netlify/functions/get-tides.js
-exports.handler = async function (event, context) {
+export const handler = async function (event, context) {
     const { lat, lon } = event.queryStringParameters;
 
     if (!lat || !lon) {
