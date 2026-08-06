@@ -361,7 +361,7 @@ const LOCATIONS = [
         }
     },
     {
-        name: 'Parana y el Rio - Vte Lopez (Prohibido)',
+        name: 'Parana y el Rio - Vte Lopez',
         lat: -34.490045,
         lon: -58.480329,
         details: {
