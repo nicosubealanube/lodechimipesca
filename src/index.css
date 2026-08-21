@@ -644,3 +644,391 @@ select:focus {
   color: var(--primary-color);
   font-weight: 500;
 }
+
+/* ==========================================================================
+   INA River Height Component Styles
+   ========================================================================== */
+.ina-card {
+  margin-top: 20px;
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4), inset 0 0 20px rgba(0, 0, 0, 0.05);
+}
+
+.ina-card::before {
+  content: '';
+  position: absolute;
+  top: 4px; left: 4px; right: 4px; bottom: 4px;
+  border: 1px solid var(--inner-border);
+  border-radius: 4px;
+  pointer-events: none;
+}
+
+.ina-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  background: rgba(30, 78, 78, 0.05);
+  border-bottom: 2px solid var(--glass-border);
+}
+
+.ina-header-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ina-header-title h3 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--secondary-color);
+  margin: 0;
+  padding: 0;
+  border-bottom: none;
+}
+
+.ina-anchor-icon {
+  color: var(--primary-color);
+}
+
+.ina-refresh-btn {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 6px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  background-color: var(--inner-glass-bg);
+  border: 1px solid var(--inner-glass-border);
+}
+
+.ina-refresh-btn:hover {
+  color: var(--primary-color);
+  transform: rotate(180deg);
+  background-color: #f9f9f9;
+}
+
+.ina-refresh-btn:active {
+  transform: scale(0.9) rotate(180deg);
+}
+
+.ina-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ina-station-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.station-badge {
+  align-self: flex-start;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  background-color: var(--secondary-color);
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.station-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin: 2px 0 0 0;
+}
+
+.reference-label {
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: #555;
+  font-style: italic;
+}
+
+.update-note {
+  font-size: 0.8rem;
+  color: #666;
+  margin: 0;
+}
+
+.ina-image-container {
+  position: relative;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid var(--inner-glass-border);
+  overflow: hidden;
+  background-color: #ffffff; /* White background for image contrast */
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ina-image-container.cropped {
+  height: 220px;
+  padding: 0;
+}
+
+.ina-forecast-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.ina-image-container.cropped .ina-forecast-image {
+  position: absolute;
+  width: 130%;
+  height: 130%;
+  top: -8%;
+  left: -15%;
+  object-fit: contain;
+}
+
+.ina-image-container.cropped:hover .ina-forecast-image.zoom-effect {
+  transform: scale(1.03);
+}
+
+/* Zoom Overlay on cropped container */
+.ina-zoom-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(30, 78, 78, 0.85); /* Deep teal with opacity */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  z-index: 10;
+}
+
+.ina-image-container.cropped:hover .ina-zoom-overlay {
+  background: rgba(211, 84, 0, 0.95); /* Burned orange on hover */
+}
+
+.zoom-icon {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* Lightbox Modal styles */
+.ina-lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(10, 10, 10, 0.95);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  animation: fadeInOverlay 0.2s ease-out forwards;
+}
+
+.ina-lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.ina-lightbox-close:hover {
+  background: var(--primary-color);
+  transform: scale(1.1);
+}
+
+.ina-lightbox-content {
+  max-width: 100%;
+  max-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.ina-lightbox-image {
+  max-width: 95%;
+  max-height: 70vh;
+  object-fit: contain;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.7);
+  padding: 8px;
+}
+
+.ina-lightbox-tip {
+  color: #ccc;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 12px;
+  border-radius: 20px;
+  margin-top: 8px;
+  text-align: center;
+}
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.ina-image-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  color: #c93b2b;
+  gap: 8px;
+}
+
+.error-icon {
+  margin-bottom: 4px;
+}
+
+.error-tip {
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* Reader Guide */
+.ina-read-guide {
+  background-color: rgba(224, 213, 193, 0.15); /* Light vintage parchment tint */
+  border: 1px dashed var(--glass-border);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.ina-read-guide h5 {
+  font-size: 0.95rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 6px;
+}
+
+.ina-read-guide ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ina-read-guide li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+.guide-bullet {
+  margin-top: 8px;
+  flex-shrink: 0;
+  border-radius: 2px;
+}
+
+.blue-bullet {
+  width: 16px;
+  height: 4px;
+  background-color: #0072b8;
+}
+
+.red-bullet {
+  width: 16px;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    #d9534f,
+    #d9534f 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
+.peak-bullet {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #10b981;
+  margin-top: 4px;
+}
+
+.valley-bullet {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #f59e0b;
+  margin-top: 4px;
+}
+
+/* Footer & DB Button */
+.ina-card-footer {
+  display: flex;
+  justify-content: center;
+  margin-top: 4px;
+}
+
+.ina-db-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  padding: 12px;
+  margin-top: 0;
+}
+
+/* CSS Animation for header fade in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out forwards;
+}

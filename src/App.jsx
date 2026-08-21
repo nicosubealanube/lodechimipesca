@@ -11,6 +11,7 @@ import SponsorSap from './components/SponsorSap'
 import FishingLicense from './components/FishingLicense'
 import { getFishingPrediction } from './utils/fishingLogic'
 import { fetchWeatherWithFallback } from './utils/weatherService'
+import InaRiverHeight from './components/InaRiverHeight'
 
 import coheloImage from './assets/cohelo_san_fernando.png'
 import cohelo2Image from './assets/cohelo2.jpg'
@@ -556,6 +557,9 @@ function App() {
                             {getFishingPrediction(weatherData)}
                         </div>
                         <WeatherCard data={weatherData} lat={activeLocationToUse.lat} lon={activeLocationToUse.lon} />
+                        {activeLocationToUse && (
+                            <InaRiverHeight locationName={activeLocationToUse.name} />
+                        )}
                     </div>
                 )}
 
