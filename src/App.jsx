@@ -477,13 +477,16 @@ function App() {
     }, [favorites, viewMode])
 
     const toggleFavorite = (locationName) => {
-        setFavorites(prev => {
-            if (prev.includes(locationName)) {
-                return prev.filter(name => name !== locationName)
-            } else {
-                return [...prev, locationName]
+        if (favorites.includes(locationName)) {
+            setFavorites(prev => prev.filter(name => name !== locationName))
+            if (viewMode === 'favorites' && location && location.name === locationName) {
+                setLocation(null)
+                setActiveSubLocation(null)
+                setWeatherData(null)
             }
-        })
+        } else {
+            setFavorites(prev => [...prev, locationName])
+        }
     }
 
     const filteredLocations = viewMode === 'favorites' && favorites.length > 0
@@ -563,6 +566,7 @@ function App() {
                             onChange={(e) => {
                                 setLocation(LOCATIONS.find(l => l.name === e.target.value))
                                 setActiveSubLocation(null) // Reset sublocation on change
+                                setWeatherData(null)
                             }}
                         >
                             <option value="" disabled>Seleccione un lugar...</option>
@@ -599,15 +603,13 @@ function App() {
                     </button>
                 </div>
 
-                {weatherData && (
+                {weatherData && activeLocationToUse && (
                     <div className="results-section">
                         <div className="prediction-banner">
                             {getFishingPrediction(weatherData)}
                         </div>
                         <WeatherCard data={weatherData} lat={activeLocationToUse.lat} lon={activeLocationToUse.lon} />
-                        {activeLocationToUse && (
-                            <InaRiverHeight locationName={activeLocationToUse.name} />
-                        )}
+                        <InaRiverHeight locationName={activeLocationToUse.name} />
                     </div>
                 )}
 

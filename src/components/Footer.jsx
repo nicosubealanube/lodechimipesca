@@ -5,6 +5,10 @@ export default function Footer() {
     const message = "Hola Chimi! Quiero consultar por carnada y artículos de pesca."
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
 
+    const playStoreLink = "https://play.google.com/store/apps/details?id=com.nicosubealanube.pescadoresba"
+    const shareMessage = `¡Descargate la app de Chimi Pesca! ${playStoreLink}`
+    const shareWhatsappUrl = `https://wa.me/?text=${encodeURIComponent(shareMessage)}`
+
     return (
         <footer className="footer">
             <p className="footer-text">
@@ -37,6 +41,9 @@ export default function Footer() {
                     YouTube
                 </a>
             </div>
+            <a href={shareWhatsappUrl} target="_blank" rel="noopener noreferrer" className="share-button">
+                📲 Compartí la App con otros pescadores 🎣
+            </a>
             <p style={{ fontSize: '0.8rem', marginTop: '20px', textAlign: 'center', maxWidth: '80%' }}>
                 Si la info de la app te sirvió y queres colaborar con los desarrolladores para mejorarla, podes hacer una donación voluntaria al siguiente alias: <strong>lodechimipesca</strong>
             </p>
