@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Header from './components/Header'
 import WeatherCard from './components/WeatherCard'
 import Footer from './components/Footer'
@@ -457,6 +457,38 @@ function App() {
     const [dateOffset, setDateOffset] = useState(DATES[0].value)
     const [weatherData, setWeatherData] = useState(null)
     const [loading, setLoading] = useState(false)
+    
+    const [favorites, setFavorites] = useState(() => {
+        const saved = localStorage.getItem('chimipesca_favorites')
+        return saved ? JSON.parse(saved) : []
+    })
+    
+    const [viewMode, setViewMode] = useState(() => {
+        const saved = localStorage.getItem('chimipesca_favorites')
+        const favs = saved ? JSON.parse(saved) : []
+        return favs.length > 0 ? 'favorites' : 'all'
+    })
+
+    useEffect(() => {
+        localStorage.setItem('chimipesca_favorites', JSON.stringify(favorites))
+        if (favorites.length === 0 && viewMode === 'favorites') {
+            setViewMode('all')
+        }
+    }, [favorites, viewMode])
+
+    const toggleFavorite = (locationName) => {
+        setFavorites(prev => {
+            if (prev.includes(locationName)) {
+                return prev.filter(name => name !== locationName)
+            } else {
+                return [...prev, locationName]
+            }
+        })
+    }
+
+    const filteredLocations = viewMode === 'favorites' && favorites.length > 0
+        ? LOCATIONS.filter(loc => favorites.includes(loc.name))
+        : LOCATIONS
 
     const activeLocationToUse = activeSubLocation || location
 
@@ -508,6 +540,24 @@ function App() {
                 <div className="controls">
                     <div className="control-group">
                         <label>¿Dónde vas a pescar?</label>
+                        
+                        {favorites.length > 0 && (
+                            <div className="favorites-tabs">
+                                <button 
+                                    className={`tab-btn ${viewMode === 'favorites' ? 'active' : ''}`}
+                                    onClick={() => setViewMode('favorites')}
+                                >
+                                    ⭐ Mis Favoritos
+                                </button>
+                                <button 
+                                    className={`tab-btn ${viewMode === 'all' ? 'active' : ''}`}
+                                    onClick={() => setViewMode('all')}
+                                >
+                                    🌎 Todos
+                                </button>
+                            </div>
+                        )}
+
                         <select
                             value={location ? location.name : ""}
                             onChange={(e) => {
@@ -516,7 +566,7 @@ function App() {
                             }}
                         >
                             <option value="" disabled>Seleccione un lugar...</option>
-                            {LOCATIONS.map(loc => (
+                            {filteredLocations.map(loc => (
                                 <option key={loc.name} value={loc.name}>{loc.name}</option>
                             ))}
                         </select>
@@ -527,6 +577,8 @@ function App() {
                             location={location}
                             activeSubLocation={activeSubLocation}
                             setActiveSubLocation={setActiveSubLocation}
+                            isFavorite={favorites.includes(location.name)}
+                            onToggleFavorite={() => toggleFavorite(location.name)}
                         />
                     )}
 

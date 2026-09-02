@@ -1215,3 +1215,63 @@ select:focus {
   color: white;
   box-shadow: 0 2px 4px rgba(211, 84, 0, 0.3);
 }
+
+/* Favorites System */
+.favorites-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.tab-btn {
+  flex: 1;
+  background: var(--inner-glass-bg);
+  border: 1px solid var(--inner-glass-border);
+  color: var(--text-secondary);
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+}
+
+.tab-btn:hover {
+  background: #F9FAFB;
+  border-color: var(--secondary-color);
+}
+
+.tab-btn.active {
+  background: var(--secondary-color);
+  color: white;
+  border-color: var(--secondary-color);
+  box-shadow: 0 2px 4px rgba(30, 78, 78, 0.3);
+}
+
+.favorite-toggle-btn {
+  background: var(--inner-glass-bg);
+  border: 1px solid var(--inner-glass-border);
+  color: var(--text-secondary);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.favorite-toggle-btn:hover {
+  background: #F9FAFB;
+  border-color: #fbbf24;
+}
+
+.favorite-toggle-btn.is-favorite {
+  background: #FFFBEB;
+  border-color: #FCD34D;
+  color: #D97706;
+}

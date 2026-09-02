@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { MapPin, Instagram, MessageCircle, Phone, ChevronLeft, ChevronRight } from 'lucide-react'
 
-const LocationInfoCard = ({ location, activeSubLocation, setActiveSubLocation }) => {
+const LocationInfoCard = ({ location, activeSubLocation, setActiveSubLocation, isFavorite, onToggleFavorite }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
     const [touchStart, setTouchStart] = useState(null)
     const [touchEnd, setTouchEnd] = useState(null)
@@ -92,6 +92,14 @@ const LocationInfoCard = ({ location, activeSubLocation, setActiveSubLocation })
                             Volver a Sede Olivos
                         </button>
                     )}
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '16px' }}>
+                    <button 
+                        className={`favorite-toggle-btn ${isFavorite ? 'is-favorite' : ''}`}
+                        onClick={onToggleFavorite}
+                    >
+                        {isFavorite ? '⭐ Quitar de Favoritos' : '⭐ Guardar en Favoritos'}
+                    </button>
                 </div>
                 <ul className="location-info-list">
                     <li className="info-item-with-link">
