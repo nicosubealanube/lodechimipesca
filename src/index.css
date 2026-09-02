@@ -1032,3 +1032,186 @@ select:focus {
 .animate-fade-in {
   animation: fadeIn 0.3s ease-out forwards;
 }
+
+/* ==========================================================================
+   Daily Time Blocks Accordion Styles
+   ========================================================================== */
+.block-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px -1px rgba(0, 0, 0, 0.1), inset 0 0 10px rgba(0, 0, 0, 0.02);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.block-card:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.15), inset 0 0 10px rgba(0, 0, 0, 0.02);
+}
+
+.block-card.expanded {
+  border-color: var(--secondary-color);
+}
+
+.block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  cursor: pointer;
+  user-select: none;
+  gap: 12px;
+  flex-wrap: wrap; /* allow wrapping on super narrow screens */
+}
+
+.block-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.block-icon {
+  font-size: 1.3rem;
+  line-height: 1;
+}
+
+.block-title-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.block-title-text {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--secondary-color);
+}
+
+.block-range {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.block-metrics {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto; /* Push metrics to the right before chevron */
+}
+
+.block-temp {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent-color);
+}
+
+.block-wind {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  display: none; /* Hide on small mobile to save space */
+}
+
+@media (min-width: 400px) {
+  .block-wind {
+    display: inline;
+  }
+}
+
+.block-badge {
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 20px;
+  text-transform: uppercase;
+  text-align: center;
+  min-width: 75px;
+}
+
+.block-badge.success {
+  background-color: #10b981;
+  color: white;
+}
+
+.block-badge.good {
+  background-color: #34d399;
+  color: #064e3b;
+}
+
+.block-badge.neutral {
+  background-color: #fbbf24;
+  color: #78350f;
+}
+
+.block-badge.danger {
+  background-color: #ef4444;
+  color: white;
+}
+
+.block-chevron {
+  color: var(--text-secondary);
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.block-card.expanded .block-chevron {
+  transform: rotate(180deg);
+  color: var(--primary-color);
+}
+
+.block-hours-wrapper {
+  padding: 16px;
+  background-color: var(--inner-glass-bg);
+  border-top: 1px solid var(--inner-glass-border);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: slideDown 0.25s ease-out forwards;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Toggle View Button */
+.weather-toggle-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--glass-border);
+  padding-bottom: 12px;
+}
+
+.weather-toggle-btn {
+  background: var(--inner-glass-bg);
+  border: 1px solid var(--inner-glass-border);
+  color: var(--text-secondary);
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.weather-toggle-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background-color: #faf6f0;
+}
+
+.weather-toggle-btn.active {
+  background: var(--primary-color);
+  border-color: #993D00;
+  color: white;
+  box-shadow: 0 2px 4px rgba(211, 84, 0, 0.3);
+}

@@ -5,8 +5,8 @@ import Footer from './components/Footer'
 import LocationInfoCard from './components/LocationInfoCard'
 import FishingReport from './components/FishingReport'
 // import SponsorPayo from './components/SponsorPayo'
-// import SponsorGrilon from './components/SponsorGrilon'
 import SponsorSap from './components/SponsorSap'
+// import SponsorShimano from './components/SponsorShimano'
 // import FeriaCazaPesca from './components/FeriaCazaPesca'
 import FishingLicense from './components/FishingLicense'
 import { getFishingPrediction } from './utils/fishingLogic'
@@ -477,11 +477,7 @@ function App() {
             // Open-Meteo returns hourly data for all requested days in a single array
             // We need to slice the 24 hours corresponding to the selected day
 
-            const currentHour = new Date().getHours()
-            // If it's today (offset 0), start from current hour, else start from 00:00
-            const hourOffset = dateOffset === 0 ? currentHour : 0
-
-            const startIndex = (dateOffset * 24) + hourOffset
+            const startIndex = (dateOffset * 24)
             const endIndex = (dateOffset + 1) * 24 // Always end at the end of the selected day (24h block end)
 
             const hourlyData = {
@@ -565,7 +561,7 @@ function App() {
 
                 <FishingReport />
                 {/* <FeriaCazaPesca /> */}
-                {/* <SponsorGrilon /> */}
+                {/* <SponsorShimano /> */}
                 <SponsorSap />
                 <FishingLicense />
             </main>
