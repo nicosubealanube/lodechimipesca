@@ -19,6 +19,7 @@ import cohelomapsImage from './assets/cohelomaps.jpg'
 import costaneraImage from './assets/costanera_norte.jpg'
 import monumentoImage from './assets/monumento_colon.png'
 import colon2Image from './assets/colon2.jpg'
+import bandaImage from './assets/banda.jpg'
 import colonmapsImage from './assets/colonmaps.jpg'
 import relojImage from './assets/reloj_tigre.png'
 import reloj2Image from './assets/reloj2.jpg'
@@ -337,7 +338,7 @@ const LOCATIONS = [
         lon: -58.409459,
         details: {
             image: monumentoImage,
-            additionalImages: [colon2Image, colonmapsImage],
+            additionalImages: [colon2Image, bandaImage, colonmapsImage],
             address: 'Av. Costanera Rafael Obligado 80, CABA',
             parking: 'No',
             bathrooms: 'No',
