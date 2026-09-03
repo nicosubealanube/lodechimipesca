@@ -58,12 +58,12 @@ const LocationInfoCard = ({ location, activeSubLocation, setActiveSubLocation, i
                         {allImages.map((img, idx) => {
                             const isBanda = typeof img === 'string' && img.includes('banda')
                             return (
-                                <div key={idx} className="location-image-slide" style={isBanda ? { backgroundColor: '#000' } : {}}>
+                                <div key={idx} className="location-image-slide">
                                     <img 
                                         src={img} 
                                         alt={`${currentLocation.name} ${idx + 1}`} 
-                                        className="location-image" 
-                                        style={isBanda ? { objectFit: 'contain' } : {}}
+                                        className="location-image"
+                                        style={isBanda ? { objectPosition: 'center bottom' } : {}}
                                     />
                                 </div>
                             )
