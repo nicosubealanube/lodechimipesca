@@ -55,11 +55,19 @@ const LocationInfoCard = ({ location, activeSubLocation, setActiveSubLocation, i
                         className="location-carousel-track" 
                         style={{ transform: `translateX(-${currentImageIndex * 100}%)` }}
                     >
-                        {allImages.map((img, idx) => (
-                            <div key={idx} className="location-image-slide">
-                                <img src={img} alt={`${currentLocation.name} ${idx + 1}`} className="location-image" />
-                            </div>
-                        ))}
+                        {allImages.map((img, idx) => {
+                            const isBanda = typeof img === 'string' && img.includes('banda')
+                            return (
+                                <div key={idx} className="location-image-slide" style={isBanda ? { backgroundColor: '#000' } : {}}>
+                                    <img 
+                                        src={img} 
+                                        alt={`${currentLocation.name} ${idx + 1}`} 
+                                        className="location-image" 
+                                        style={isBanda ? { objectFit: 'contain' } : {}}
+                                    />
+                                </div>
+                            )
+                        })}
                     </div>
                     
                     {allImages.length > 1 && (
