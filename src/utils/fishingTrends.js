@@ -6,10 +6,10 @@ export function getDayBlocks(data) {
     if (!data || !data.time || data.time.length === 0) return [];
 
     const blocksConfig = [
+        { id: 'early', label: 'Madrugada', icon: '🌌', startHour: 0, endHour: 6, range: '00:00 a 06:00 hs' },
         { id: 'morning', label: 'Mañana', icon: '🌅', startHour: 6, endHour: 12, range: '06:00 a 12:00 hs' },
-        { id: 'midday', label: 'Mediodía', icon: '☀️', startHour: 12, endHour: 16, range: '12:00 a 16:00 hs' },
-        { id: 'afternoon', label: 'Tarde', icon: '🌇', startHour: 16, endHour: 20, range: '16:00 a 20:00 hs' },
-        { id: 'night', label: 'Noche / Madrugada', icon: '🌙', startHour: 20, endHour: 6, range: '20:00 a 06:00 hs' }
+        { id: 'afternoon', label: 'Tarde', icon: '☀️', startHour: 12, endHour: 18, range: '12:00 a 18:00 hs' },
+        { id: 'night', label: 'Noche', icon: '🌙', startHour: 18, endHour: 24, range: '18:00 a 00:00 hs' }
     ];
 
     const hasWaves = data.wave_height && data.wave_height.length > 0;

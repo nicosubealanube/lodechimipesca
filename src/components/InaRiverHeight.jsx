@@ -22,6 +22,16 @@ const INA_STATIONS = {
         isReference: false,
         imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_Campana.png'
     },
+    'Costanera Parana de las Palmas - Escobar': {
+        stationName: 'Escobar',
+        isReference: false,
+        imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_Escobar.png'
+    },
+    'Costanera San Pedro': {
+        stationName: 'Zárate',
+        isReference: true,
+        imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_Zarate.png'
+    },
     'Cohelo - San Fernando': {
         stationName: 'San Fernando',
         isReference: false,

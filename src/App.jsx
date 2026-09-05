@@ -78,6 +78,12 @@ import saladomapsImage from './assets/saladomaps.jpg'
 import clubPescadoresImage from './assets/club_pescadores.png'
 import ribs2Image from './assets/ribs2.jpg'
 import ribsmapImage from './assets/ribsmap.jpg'
+import sanpeImage from './assets/sanpe1.png'
+import sanpe2Image from './assets/sanpe2.png'
+import sanpemapsImage from './assets/sanpemaps.png'
+import escoImage from './assets/esco1.png'
+import esco2Image from './assets/esco2.jpeg'
+import escomapsImage from './assets/escomaps.png'
 
 const LOCATIONS = [
 
@@ -273,6 +279,38 @@ const LOCATIONS = [
         }
     },
     {
+        name: 'Costanera San Pedro - San Pedro',
+        lat: -33.688677,
+        lon: -59.637256,
+        details: {
+            image: sanpeImage,
+            additionalImages: [sanpe2Image, sanpemapsImage],
+            address: 'Av Vito Dumas S/N, San Pedro',
+            googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=-33.688677,-59.637256',
+            parking: 'Gratuito',
+            bathrooms: 'No',
+            hours: '24 hs',
+            bait: 'Vendedores ambulantes',
+            notes: 'Pocos servicios, recomendamos llevar todo lo necesario para la pesca.'
+        }
+    },
+    {
+        name: 'Costanera Parana de las Palmas - Escobar',
+        lat: -34.246658,
+        lon: -58.732916,
+        details: {
+            image: escoImage,
+            additionalImages: [esco2Image, escomapsImage],
+            address: 'Ruta 25, Escobar',
+            googleMapsUrl: 'https://www.google.com/maps/search/?api=1&query=-34.246658,-58.732916',
+            parking: 'Gratuito',
+            bathrooms: 'No',
+            hours: '24 hs',
+            bait: 'Vendedores ambulantes',
+            notes: 'Algunos juegos para niños y feria de artesanos.'
+        }
+    },
+    {
         name: 'Costanera Punta Lara - P. Lara',
         lat: -34.795840,
         lon: -57.993586,
@@ -458,12 +496,12 @@ function App() {
     const [dateOffset, setDateOffset] = useState(DATES[0].value)
     const [weatherData, setWeatherData] = useState(null)
     const [loading, setLoading] = useState(false)
-    
+
     const [favorites, setFavorites] = useState(() => {
         const saved = localStorage.getItem('chimipesca_favorites')
         return saved ? JSON.parse(saved) : []
     })
-    
+
     const [viewMode, setViewMode] = useState(() => {
         const saved = localStorage.getItem('chimipesca_favorites')
         const favs = saved ? JSON.parse(saved) : []
@@ -544,16 +582,16 @@ function App() {
                 <div className="controls">
                     <div className="control-group">
                         <label>¿Dónde vas a pescar?</label>
-                        
+
                         {favorites.length > 0 && (
                             <div className="favorites-tabs">
-                                <button 
+                                <button
                                     className={`tab-btn ${viewMode === 'favorites' ? 'active' : ''}`}
                                     onClick={() => setViewMode('favorites')}
                                 >
                                     ⭐ Mis Favoritos
                                 </button>
-                                <button 
+                                <button
                                     className={`tab-btn ${viewMode === 'all' ? 'active' : ''}`}
                                     onClick={() => setViewMode('all')}
                                 >
