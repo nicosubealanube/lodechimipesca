@@ -47,14 +47,7 @@ export function getDayBlocks(data) {
 
         // Safeguard if a block is empty
         if (blockHours.length === 0) {
-            return {
-                ...config,
-                tempStr: '--',
-                windStr: '--',
-                condition: 'Sin datos',
-                conditionClass: 'neutral',
-                hours: []
-            };
+            return null;
         }
 
         // Calculate averages for this specific block
@@ -129,5 +122,5 @@ export function getDayBlocks(data) {
             conditionClass,
             hours: blockHours
         };
-    });
+    }).filter(block => block !== null);
 }

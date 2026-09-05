@@ -554,15 +554,41 @@ function App() {
             const startIndex = (dateOffset * 24)
             const endIndex = (dateOffset + 1) * 24 // Always end at the end of the selected day (24h block end)
 
+            let timeArr = weatherData.hourly.time.slice(startIndex, endIndex)
+            let tempArr = weatherData.hourly.temperature_2m.slice(startIndex, endIndex)
+            let pressArr = weatherData.hourly.surface_pressure.slice(startIndex, endIndex)
+            let windSpdArr = weatherData.hourly.wind_speed_10m.slice(startIndex, endIndex)
+            let windDirArr = weatherData.hourly.wind_direction_10m.slice(startIndex, endIndex)
+            let codeArr = weatherData.hourly.weather_code.slice(startIndex, endIndex)
+            let dayArr = weatherData.hourly.is_day.slice(startIndex, endIndex)
+            let waveArr = weatherData.hourly.wave_height ? weatherData.hourly.wave_height.slice(startIndex, endIndex) : []
+            let tideArr = weatherData.hourly.tide_height ? weatherData.hourly.tide_height.slice(startIndex, endIndex) : []
+
+            if (dateOffset === 0) {
+                const now = Date.now();
+                const futureIndices = timeArr.map((t, idx) => new Date(t).getTime() > now ? idx : -1).filter(idx => idx !== -1);
+                
+                timeArr = futureIndices.map(idx => timeArr[idx]);
+                tempArr = futureIndices.map(idx => tempArr[idx]);
+                pressArr = futureIndices.map(idx => pressArr[idx]);
+                windSpdArr = futureIndices.map(idx => windSpdArr[idx]);
+                windDirArr = futureIndices.map(idx => windDirArr[idx]);
+                codeArr = futureIndices.map(idx => codeArr[idx]);
+                dayArr = futureIndices.map(idx => dayArr[idx]);
+                if (waveArr.length > 0) waveArr = futureIndices.map(idx => waveArr[idx]);
+                if (tideArr.length > 0) tideArr = futureIndices.map(idx => tideArr[idx]);
+            }
+
             const hourlyData = {
-                time: weatherData.hourly.time.slice(startIndex, endIndex),
-                temperature_2m: weatherData.hourly.temperature_2m.slice(startIndex, endIndex),
-                surface_pressure: weatherData.hourly.surface_pressure.slice(startIndex, endIndex),
-                wind_speed_10m: weatherData.hourly.wind_speed_10m.slice(startIndex, endIndex),
-                wind_direction_10m: weatherData.hourly.wind_direction_10m.slice(startIndex, endIndex),
-                weather_code: weatherData.hourly.weather_code.slice(startIndex, endIndex),
-                is_day: weatherData.hourly.is_day.slice(startIndex, endIndex),
-                wave_height: weatherData.hourly.wave_height ? weatherData.hourly.wave_height.slice(startIndex, endIndex) : [],
+                time: timeArr,
+                temperature_2m: tempArr,
+                surface_pressure: pressArr,
+                wind_speed_10m: windSpdArr,
+                wind_direction_10m: windDirArr,
+                weather_code: codeArr,
+                is_day: dayArr,
+                wave_height: waveArr,
+                tide_height: tideArr,
             }
 
             setWeatherData(hourlyData)
