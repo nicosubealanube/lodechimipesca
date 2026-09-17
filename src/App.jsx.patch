@@ -1,0 +1,25 @@
+--- src/App.jsx
++++ src/App.jsx
+@@ -85,6 +85,7 @@
+ import esco2Image from './assets/esco2.jpeg'
+ import escomapsImage from './assets/escomaps.png'
++import ramiroImage from './assets/ramiro_alvarez.jpg'
+ 
+ const LOCATIONS = [
+@@ -442,7 +443,15 @@
+             parking: 'Si',
+             bathrooms: 'Si',
+             hours: '24hs',
+             bait: 'Vendedor ambulante en la entrada',
+-            notes: 'Muelle privado, cobra entrada por día: Adultos $15.000, menores de 16 años y jubilados $7000.'
++            notes: 'Muelle privado, cobra entrada por día: Adultos $15.000, menores de 16 años y jubilados $7000.',
++            recommendedGuide: {
++                name: 'Ramiro Alvarez',
++                image: ramiroImage,
++                instagram: '@ramiroalvarez23_',
++                instagramUrl: 'https://www.instagram.com/ramiroalvarez23_?stkn=MW1rb2FxMHZudDU4cA%3D%3D',
++                whatsapp: '+54 9 11 2292-7549',
++                whatsappUrl: 'https://wa.me/5491122927549'
++            }
+         }
+     },
