@@ -1302,3 +1302,50 @@ select:focus {
   border-color: #FCD34D;
   color: #D97706;
 }
+/* Offline Feature Styles */
+.offline-warning-banner {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border-left: 4px solid #ffeeba;
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.offline-save-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+    margin-bottom: 8px;
+}
+
+.offline-save-btn {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.offline-save-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.offline-save-btn.saved-btn {
+    background-color: #10b981;
+    cursor: default;
+    transform: none;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}

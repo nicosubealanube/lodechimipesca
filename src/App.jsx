@@ -566,6 +566,17 @@ function App() {
         : LOCATIONS
 
     const activeLocationToUse = activeSubLocation || location
+    const [isSavedOffline, setIsSavedOffline] = useState(false)
+    const [offlineWarning, setOfflineWarning] = useState(null)
+
+    // Check if current view is already saved
+    useEffect(() => {
+        if (weatherData && activeLocationToUse) {
+            const key = `offline_weather_${activeLocationToUse.name}_${dateOffset}`
+            const saved = localStorage.getItem(key)
+            setIsSavedOffline(!!saved)
+        }
+    }, [weatherData, activeLocationToUse, dateOffset])
 
     const fetchWeather = async () => {
         if (!activeLocationToUse) {
@@ -574,6 +585,7 @@ function App() {
         }
 
         setLoading(true)
+        setOfflineWarning(null)
         try {
             const data = await fetchWeatherWithFallback(activeLocationToUse.lat, activeLocationToUse.lon)
 
@@ -581,11 +593,8 @@ function App() {
             const marineData = { hourly: { wave_height: data.hourly.wave_height } } // Adapt structure if needed or just use returned data directly
 
             // Filter data for the selected day
-            // Open-Meteo returns hourly data for all requested days in a single array
-            // We need to slice the 24 hours corresponding to the selected day
-
             const startIndex = (dateOffset * 24)
-            const endIndex = (dateOffset + 1) * 24 // Always end at the end of the selected day (24h block end)
+            const endIndex = (dateOffset + 1) * 24 
 
             let timeArr = weatherData.hourly.time.slice(startIndex, endIndex)
             let tempArr = weatherData.hourly.temperature_2m.slice(startIndex, endIndex)
@@ -627,9 +636,43 @@ function App() {
             setWeatherData(hourlyData)
         } catch (error) {
             console.error("Error fetching weather:", error)
-            alert("Error al obtener el clima. Por favor intente nuevamente.")
+            
+            // Offline Fallback
+            const key = `offline_weather_${activeLocationToUse.name}_${dateOffset}`
+            const savedDataStr = localStorage.getItem(key)
+            if (savedDataStr) {
+                try {
+                    const savedData = JSON.parse(savedDataStr)
+                    setWeatherData(savedData.weather)
+                    setOfflineWarning(savedData.timestamp)
+                } catch (e) {
+                    alert("Error al obtener el clima y no hay datos guardados legibles.")
+                }
+            } else {
+                alert("Error al obtener el clima y no hay datos guardados para este lugar.")
+            }
         } finally {
             setLoading(false)
+        }
+    }
+
+    const saveForOffline = () => {
+        if (!weatherData || !activeLocationToUse) return
+        
+        const key = `offline_weather_${activeLocationToUse.name}_${dateOffset}`
+        const now = new Date()
+        const timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
+        
+        const dataToSave = {
+            weather: weatherData,
+            timestamp: timeString
+        }
+        
+        try {
+            localStorage.setItem(key, JSON.stringify(dataToSave))
+            setIsSavedOffline(true)
+        } catch (e) {
+            alert("No se pudo guardar. Es posible que el navegador no tenga espacio.")
         }
     }
 
@@ -703,11 +746,28 @@ function App() {
 
                 {weatherData && activeLocationToUse && (
                     <div className="results-section">
+                        {offlineWarning && (
+                            <div className="offline-warning-banner">
+                                <span>⚠️ <strong>Estás sin conexión.</strong> Te mostramos el clima descargado hoy a las {offlineWarning}hs.</span>
+                            </div>
+                        )}
                         <div className="prediction-banner">
                             {getFishingPrediction(weatherData)}
                         </div>
                         <WeatherCard data={weatherData} lat={activeLocationToUse.lat} lon={activeLocationToUse.lon} />
                         <InaRiverHeight locationName={activeLocationToUse.name} />
+                        
+                        {!offlineWarning && (
+                            <div className="offline-save-container">
+                                <button 
+                                    className={`offline-save-btn ${isSavedOffline ? 'saved-btn' : ''}`}
+                                    onClick={saveForOffline}
+                                    disabled={isSavedOffline}
+                                >
+                                    {isSavedOffline ? '✅ Guardado para ver sin señal' : '💾 Descargar para ver sin señal'}
+                                </button>
+                            </div>
+                        )}
                     </div>
                 )}
 
