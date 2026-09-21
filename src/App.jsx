@@ -86,6 +86,9 @@ import escoImage from './assets/esco1.png'
 import esco2Image from './assets/esco2.jpeg'
 import escomapsImage from './assets/escomaps.png'
 import ramiroImage from './assets/ramiro_alvarez.png'
+import guazuImage from './assets/guazu.jpg'
+import guazu2Image from './assets/guazu2.jpg'
+import guazumapsImage from './assets/guazumaps.png'
 
 const LOCATIONS = [
 
@@ -165,6 +168,26 @@ const LOCATIONS = [
                 whatsappUrl: 'https://wa.me/5491127015875',
                 notes: 'Muelle iluminado de 100m. Cuenta con 5 fogones sobre la costa, quincho cubierto con 4 parrillas, comedor con heladeras/freezer y baños externos. Hay alojamiento disponible (habitaciones y un departamento), pero las reservas se hacen exclusivamente en la sede de Olivos (no se permite ir y decidir quedarse en el momento). La tranquera cierra a las 20hs.'
             }
+        }
+    },
+    {
+        name: 'Club Guazú - Zarate',
+        lat: -33.919191,
+        lon: -58.885812,
+        details: {
+            image: guazuImage,
+            additionalImages: [guazu2Image, guazumapsImage],
+            address: 'Ruta 12 Km 112,5 , Zárate',
+            googleMapsUrl: 'https://maps.app.goo.gl/JFdpkpsF4jcbwpYu7',
+            parking: 'Si',
+            bathrooms: 'Si',
+            hours: '24hs (diurno de 7am a 23hs y de 23pm a 7hs nocturno)',
+            bait: 'No',
+            instagram: '@clubguazu_oficial',
+            instagramUrl: 'https://www.instagram.com/clubguazu_oficial',
+            whatsapp: '15-6844-6081',
+            whatsappUrl: 'https://wa.me/5491168446081',
+            notes: 'Club exclusivo para socios. Cuenta con un muelle de 340mts con luces Led, agua caliente las 24hs, 40 habitaciones para pernoctar, WiFi y DirecTV, Quinchos y cocinas, heladeras y plaza de juegos para niños.'
         }
     },
     {
