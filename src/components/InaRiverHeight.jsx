@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Anchor, ExternalLink, Info, RefreshCw, X, ZoomIn } from 'lucide-react';
 
 const INA_STATIONS = {
+    'Club Guazú - Zarate': {
+        stationName: 'Zárate',
+        isReference: false,
+        imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_Zarate.png'
+    },
     'Club El Anzuelo - Zarate': {
         stationName: 'Zárate',
         isReference: false,
@@ -27,10 +32,35 @@ const INA_STATIONS = {
         isReference: false,
         imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_Escobar.png'
     },
-    'Costanera San Pedro': {
+    'Costanera San Pedro - San Pedro': {
         stationName: 'Zárate',
         isReference: true,
         imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_Zarate.png'
+    },
+    'Sede Ibicuy, Entre Ríos': {
+        stationName: 'Zárate',
+        isReference: true,
+        imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_Zarate.png'
+    },
+    'Costanera Punta Lara - P. Lara': {
+        stationName: 'Buenos Aires',
+        isReference: true,
+        imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_BuenosAires_15D.png'
+    },
+    'Isla Paulino - Berisso': {
+        stationName: 'Buenos Aires',
+        isReference: true,
+        imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_BuenosAires_15D.png'
+    },
+    'Pejerrey Club - Quilmes': {
+        stationName: 'Buenos Aires',
+        isReference: true,
+        imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_BuenosAires_15D.png'
+    },
+    'Río Salado - Roque Perez': {
+        stationName: 'Buenos Aires',
+        isReference: true,
+        imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_BuenosAires_15D.png'
     },
     'Cohelo - San Fernando': {
         stationName: 'San Fernando',
