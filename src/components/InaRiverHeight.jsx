@@ -2,6 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Anchor, ExternalLink, Info, RefreshCw, X, ZoomIn } from 'lucide-react';
 
 const INA_STATIONS = {
+    'Parque España - Rosario': {
+        stationName: 'Rosario',
+        isReference: false,
+        imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_Rosario.png'
+    },
     'Club Guazú - Zarate': {
         stationName: 'Zárate',
         isReference: false,

@@ -89,6 +89,9 @@ import ramiroImage from './assets/ramiro_alvarez.png'
 import guazuImage from './assets/guazu.jpg'
 import guazu2Image from './assets/guazu2.jpg'
 import guazumapsImage from './assets/guazumaps.png'
+import parqueEspanaImage from './assets/parque_espana.png'
+import parqueEspana2Image from './assets/parque_espana2.png'
+import parqueEspanaMapsImage from './assets/parque_espanamaps.png'
 
 const LOCATIONS = [
 
@@ -440,6 +443,22 @@ const LOCATIONS = [
             hours: '24hs',
             bait: 'Vendedores ambulantes',
             notes: 'Luego de un tiempo prohibido, se puede volver a pescar en el lugar'
+        }
+    },
+    {
+        name: 'Parque España - Rosario',
+        lat: -32.938884,
+        lon: -60.635535,
+        details: {
+            image: parqueEspanaImage,
+            additionalImages: [parqueEspana2Image, parqueEspanaMapsImage],
+            address: 'Sarmiento y M. Armas, Rosario',
+            googleMapsUrl: 'https://maps.app.goo.gl/qwGMnptxi5Ek3Bob9',
+            parking: 'Sí',
+            bathrooms: 'Se pueden usar los del Centro Cultural hasta las 20hs',
+            hours: '24hs',
+            bait: 'Ocasionalmente hay vendedores de lombrices',
+            notes: 'Respetar los lugares con cartel de prohibición de pesca. Cerca de la orilla puede haber enganche. Hay estacionamiento cerca con cuidacoches a voluntad.'
         }
     },
     {
