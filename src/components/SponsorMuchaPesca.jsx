@@ -169,7 +169,7 @@ export default function SponsorMuchaPesca() {
                 />
                 <div className="video-info" style={{ gap: '2px' }}>
                     <span className="video-title" style={{ fontWeight: '800', color: '#000000', fontSize: '1rem' }}>
-                        Mucha Pesca TV
+                        Mucha Pesca
                     </span>
                     <span style={{ fontSize: '0.85rem', color: 'var(--text-primary)', fontWeight: '600' }}>
                         Radio Amplitud, AM 660
