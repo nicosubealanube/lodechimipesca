@@ -172,7 +172,7 @@ export default function SponsorMuchaPesca() {
                         Mucha Pesca TV
                     </span>
                     <span style={{ fontSize: '0.85rem', color: 'var(--text-primary)', fontWeight: '600' }}>
-                        Streaming en vivo
+                        Radio Amplitud, AM 660
                     </span>
                     <span style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
                         todos los miércoles de 20hs a 22hs
