@@ -6,6 +6,7 @@ import LocationInfoCard from './components/LocationInfoCard'
 import FishingReport from './components/FishingReport'
 // import SponsorPayo from './components/SponsorPayo'
 import SponsorSap from './components/SponsorSap'
+import SponsorMuchaPesca from './components/SponsorMuchaPesca'
 // import SponsorShimano from './components/SponsorShimano'
 // import FeriaCazaPesca from './components/FeriaCazaPesca'
 import FishingLicense from './components/FishingLicense'
@@ -691,6 +692,7 @@ function App() {
                 {/* <FeriaCazaPesca /> */}
                 {/* <SponsorShimano /> */}
                 <SponsorSap />
+                <SponsorMuchaPesca />
                 <FishingLicense />
             </main>
             <Footer />
