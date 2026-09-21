@@ -185,6 +185,8 @@ const LOCATIONS = [
             bait: 'No',
             instagram: '@clubguazu_oficial',
             instagramUrl: 'https://www.instagram.com/clubguazu_oficial',
+            facebook: 'Club Guazú',
+            facebookUrl: 'https://www.facebook.com/club.guazu',
             whatsapp: '15-6844-6081',
             whatsappUrl: 'https://wa.me/5491168446081',
             notes: 'Club exclusivo para socios. Cuenta con un muelle de 340mts con luces Led, agua caliente las 24hs, 40 habitaciones para pernoctar, WiFi y DirecTV, Quinchos y cocinas, heladeras y plaza de juegos para niños.'

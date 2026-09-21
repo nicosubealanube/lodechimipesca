@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { MapPin, Instagram, MessageCircle, Phone, ChevronLeft, ChevronRight, User, ChevronDown, ChevronUp } from 'lucide-react'
+import { MapPin, Instagram, Facebook, MessageCircle, Phone, ChevronLeft, ChevronRight, User, ChevronDown, ChevronUp } from 'lucide-react'
 
 const LocationInfoCard = ({ location, activeSubLocation, setActiveSubLocation, isFavorite, onToggleFavorite }) => {
     const [currentImageIndex, setCurrentImageIndex] = useState(0)
@@ -168,6 +168,20 @@ const LocationInfoCard = ({ location, activeSubLocation, setActiveSubLocation, i
                             >
                                 <Instagram size={16} className="info-icon" />
                                 <span className="info-link-text">{details.instagram}</span>
+                            </a>
+                        </li>
+                    )}
+                    {details.facebook && (
+                        <li className="info-item-with-link">
+                            <strong>Facebook:</strong>{' '}
+                            <a
+                                href={details.facebookUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="info-link"
+                            >
+                                <Facebook size={16} className="info-icon" />
+                                <span className="info-link-text">{details.facebook}</span>
                             </a>
                         </li>
                     )}
