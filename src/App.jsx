@@ -174,7 +174,7 @@ const LOCATIONS = [
         }
     },
     {
-        name: 'Club Guazú - Zarate',
+        name: 'Club Guazú - Zárate',
         lat: -33.919191,
         lon: -58.885812,
         details: {
@@ -196,7 +196,7 @@ const LOCATIONS = [
         }
     },
     {
-        name: 'Club El Anzuelo - Zarate',
+        name: 'Club El Anzuelo - Zárate',
         lat: -33.906770,
         lon: -58.934338,
         details: {
@@ -215,7 +215,7 @@ const LOCATIONS = [
         }
     },
     {
-        name: 'Recreo Keidel - Zarate',
+        name: 'Recreo Keidel - Zárate',
         lat: -33.892698,
         lon: -58.913481,
         details: {
@@ -279,7 +279,7 @@ const LOCATIONS = [
         }
     },
     {
-        name: 'Costanera de Zarate - Zarate',
+        name: 'Costanera de Zárate - Zárate',
         lat: -34.10466,
         lon: -59.00514,
         details: {
@@ -294,7 +294,7 @@ const LOCATIONS = [
         }
     },
     {
-        name: 'Costanera Norte - Ribs al Rio',
+        name: 'Costanera Norte - Ribs al Río',
         lat: -34.5444,
         lon: -58.4320,
         details: {
@@ -325,7 +325,7 @@ const LOCATIONS = [
         }
     },
     {
-        name: 'Costanera Parana de las Palmas - Escobar',
+        name: 'Costanera Paraná de las Palmas - Escobar',
         lat: -34.246658,
         lon: -58.732916,
         details: {
@@ -401,7 +401,7 @@ const LOCATIONS = [
         }
     },
     {
-        name: 'Mon. a Colón - Aeroparque',
+        name: 'Monumento a Colón - Aeroparque',
         lat: -34.556746,
         lon: -58.409459,
         details: {
@@ -431,7 +431,7 @@ const LOCATIONS = [
         }
     },
     {
-        name: 'Parana y el Rio - Vte Lopez',
+        name: 'Paraná y el Río - Vte Lopez',
         lat: -34.490045,
         lon: -58.480329,
         details: {
@@ -615,7 +615,7 @@ function App() {
 
             // Filter data for the selected day
             const startIndex = (dateOffset * 24)
-            const endIndex = (dateOffset + 1) * 24 
+            const endIndex = (dateOffset + 1) * 24
 
             let timeArr = weatherData.hourly.time.slice(startIndex, endIndex)
             let tempArr = weatherData.hourly.temperature_2m.slice(startIndex, endIndex)
@@ -630,7 +630,7 @@ function App() {
             if (dateOffset === 0) {
                 const now = Date.now();
                 const futureIndices = timeArr.map((t, idx) => new Date(t).getTime() > now ? idx : -1).filter(idx => idx !== -1);
-                
+
                 timeArr = futureIndices.map(idx => timeArr[idx]);
                 tempArr = futureIndices.map(idx => tempArr[idx]);
                 pressArr = futureIndices.map(idx => pressArr[idx]);
@@ -657,7 +657,7 @@ function App() {
             setWeatherData(hourlyData)
         } catch (error) {
             console.error("Error fetching weather:", error)
-            
+
             // Offline Fallback
             const key = `offline_weather_${activeLocationToUse.name}_${dateOffset}`
             const savedDataStr = localStorage.getItem(key)
@@ -679,16 +679,16 @@ function App() {
 
     const saveForOffline = () => {
         if (!weatherData || !activeLocationToUse) return
-        
+
         const key = `offline_weather_${activeLocationToUse.name}_${dateOffset}`
         const now = new Date()
-        const timeString = now.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})
-        
+        const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+
         const dataToSave = {
             weather: weatherData,
             timestamp: timeString
         }
-        
+
         try {
             localStorage.setItem(key, JSON.stringify(dataToSave))
             setIsSavedOffline(true)
@@ -777,10 +777,10 @@ function App() {
                         </div>
                         <WeatherCard data={weatherData} lat={activeLocationToUse.lat} lon={activeLocationToUse.lon} />
                         <InaRiverHeight locationName={activeLocationToUse.name} />
-                        
+
                         {!offlineWarning && (
                             <div className="offline-save-container">
-                                <button 
+                                <button
                                     className={`offline-save-btn ${isSavedOffline ? 'saved-btn' : ''}`}
                                     onClick={saveForOffline}
                                     disabled={isSavedOffline}
