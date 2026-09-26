@@ -43,10 +43,10 @@ export default function TideInfo({ lat, lon, timeIso }) {
 
     if (error || !tideData || !tideTimes) return null;
 
-    // Shift the requested time forward by 3 hours to fetch delayed Open Meteo data
-    // because global models lack the Rio de la Plata 3h estuary penetration delay.
-    const TIME_SHIFT_MS = 3 * 60 * 60 * 1000;
-    const targetTime = new Date(timeIso).getTime() + TIME_SHIFT_MS;
+    // Shift the requested time backwards by 1 hour to fetch delayed Open Meteo data
+    // to better align with the real estuarine delay (previously added 3h erroneously).
+    const TIME_SHIFT_MS = 1 * 60 * 60 * 1000;
+    const targetTime = new Date(timeIso).getTime() - TIME_SHIFT_MS;
     const targetIndex = tideTimes.findIndex(t => new Date(t).getTime() === targetTime);
     if (targetIndex === -1) return null;
 
