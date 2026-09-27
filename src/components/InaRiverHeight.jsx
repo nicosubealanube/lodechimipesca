@@ -7,22 +7,22 @@ const INA_STATIONS = {
         isReference: false,
         imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_Rosario.png'
     },
-    'Club Guazú - Zarate': {
+    'Club Guazú - Zárate': {
         stationName: 'Zárate',
         isReference: false,
         imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_Zarate.png'
     },
-    'Club El Anzuelo - Zarate': {
+    'Club El Anzuelo - Zárate': {
         stationName: 'Zárate',
         isReference: false,
         imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_Zarate.png'
     },
-    'Recreo Keidel - Zarate': {
+    'Recreo Keidel - Zárate': {
         stationName: 'Zárate',
         isReference: false,
         imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_Zarate.png'
     },
-    'Costanera de Zarate - Zarate': {
+    'Costanera de Zárate - Zárate': {
         stationName: 'Zárate',
         isReference: false,
         imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_Zarate.png'
@@ -32,7 +32,7 @@ const INA_STATIONS = {
         isReference: false,
         imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_Campana.png'
     },
-    'Costanera Parana de las Palmas - Escobar': {
+    'Costanera Paraná de las Palmas - Escobar': {
         stationName: 'Escobar',
         isReference: false,
         imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_Escobar.png'
@@ -82,7 +82,7 @@ const INA_STATIONS = {
         isReference: true,
         imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_SanFernando.png'
     },
-    'Parana y el Rio - Vte Lopez': {
+    'Paraná y el Río - Vte Lopez': {
         stationName: 'San Fernando',
         isReference: true,
         imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_SanFernando.png'
@@ -97,12 +97,12 @@ const INA_STATIONS = {
         isReference: true,
         imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_SanFernando.png'
     },
-    'Costanera Norte - Ribs al Rio': {
+    'Costanera Norte - Ribs al Río': {
         stationName: 'San Fernando',
         isReference: true,
         imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_SanFernando.png'
     },
-    'Mon. a Colón - Aeroparque': {
+    'Monumento a Colón - Aeroparque': {
         stationName: 'San Fernando',
         isReference: true,
         imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_SanFernando.png'
