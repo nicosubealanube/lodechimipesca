@@ -122,6 +122,11 @@ const INA_STATIONS = {
         isReference: true,
         imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_SanFernando.png'
     },
+    'Club de Pescadores de Bs As - CABA': {
+        stationName: 'San Fernando',
+        isReference: true,
+        imgUrl: 'https://alerta.ina.gob.ar/ina/42-RIODELAPLATA/productos/Prono_SanFernando.png'
+    },
     'El Reloj - Tigre': {
         stationName: 'San Fernando',
         isReference: true,
