@@ -1,6 +1,36 @@
+import { getDominantWindDirection } from './fishingLogic';
+
 /**
  * Utility to group 24-hour weather data into 4 major daily blocks with average conditions and fishing quality.
  */
+
+function getBlockWeatherCategory(blockHours, blockId) {
+    const codes = blockHours
+        .map((h) => h.weatherCode)
+        .filter((c) => c !== null && c !== undefined);
+
+    const isNightBlock = blockId === 'early' || blockId === 'night';
+    if (codes.length === 0) return isNightBlock ? 'clear_night' : 'clear_day';
+
+    // Prioritize hazardous / wet conditions so fishermen immediately notice rain or storms
+    if (codes.some((c) => c >= 95 && c <= 99)) return 'storm';
+    if (codes.some((c) => (c >= 51 && c <= 67) || (c >= 80 && c <= 82))) return 'rain';
+    if (codes.some((c) => c >= 71 && c <= 77)) return 'rain';
+    if (codes.some((c) => c >= 45 && c <= 48)) return 'fog';
+
+    // Otherwise check cloud cover frequency
+    const cloudyCount = codes.filter((c) => c === 3).length;
+    const partlyCount = codes.filter((c) => c === 1 || c === 2).length;
+    const clearCount = codes.filter((c) => c === 0).length;
+
+    if (cloudyCount >= clearCount && cloudyCount >= partlyCount && cloudyCount > 0) {
+        return 'cloudy';
+    }
+    if (partlyCount > clearCount) {
+        return isNightBlock ? 'cloudy' : 'partly_cloudy';
+    }
+    return isNightBlock ? 'clear_night' : 'clear_day';
+}
 
 export function getDayBlocks(data) {
     if (!data || !data.time || data.time.length === 0) return [];
@@ -114,10 +144,19 @@ export function getDayBlocks(data) {
             conditionClass = 'danger';
         }
 
+        const dominantWindDir = getDominantWindDirection(blockHours.map(h => h.windDir));
+        const weatherCategory = getBlockWeatherCategory(blockHours, config.id);
+
         return {
             ...config,
             tempStr: `${Math.round(avgTemp)}°C`,
             windStr: `🍃 ${Math.round(avgWind)} km/h (${windDesc})`,
+            avgTemp: Math.round(avgTemp),
+            avgWind: Math.round(avgWind),
+            avgPressure: Math.round(avgPressure),
+            dominantWindDir,
+            weatherCategory,
+            windDesc,
             condition,
             conditionClass,
             hours: blockHours
