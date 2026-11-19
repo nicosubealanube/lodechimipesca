@@ -925,7 +925,7 @@ export function downloadForecastImage({ dataUrl, filename }) {
  */
 export async function shareForecastImage({ dataUrl, blob, filename, locationName, dateOffset }) {
     const dateText = formatFullDateLabel(dateOffset);
-    const shareText = `🎣 Pronóstico de pesca en ${locationName} (${dateText}) — ChimiPesca • Powered by SNAKE (@snakefishing_ok)`;
+    const shareText = `🎣 Pronóstico en ${locationName} (${dateText}) — ChimiPesca\nPowered by SNAKE 👉 https://instagram.com/snakefishing_ok`;
 
     // 1. Native Capacitor Android/iOS (if @capacitor/share & @capacitor/filesystem are installed)
     if (
