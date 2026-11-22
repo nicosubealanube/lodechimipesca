@@ -5,11 +5,15 @@ import cantherisLogo from '../assets/cantheris_logo.png'
 
 const SNAKE_INSTAGRAM_URL = 'https://www.instagram.com/snakefishing_ok?obrf=a2E5ZGRubTk4Z3U2'
 const CANTHERIS_INSTAGRAM_URL = 'https://www.instagram.com/cantherisarg?fqnt=NWprNzNjZGY1cW9v'
+const CANTHERIS_STORE_URL = 'https://www.cantheris.com/productos/'
 
-// Fallback products used only if the live Netlify Function is unreachable (e.g. offline / pre-deploy)
+// Ready for Snake product images once provided: [{ name, image, url }]
+const SNAKE_PRODUCTS = []
+
+// Fallback products used only if the live Netlify Function is unreachable (e.g. offline / local)
 const FALLBACK_CANTHERIS_PRODUCTS = [
     {
-        name: 'Remera Hidden',
+        name: 'Hidden',
         image: 'https://dcdn-us.mitiendanube.com/stores/595/405/products/hidden-conj-mar-e91788b6408923ae2016977485211533-480-0.webp',
         url: 'https://www.cantheris.com/productos/hidden/',
     },
@@ -19,12 +23,12 @@ const FALLBACK_CANTHERIS_PRODUCTS = [
         url: 'https://www.cantheris.com/productos/france-azul/',
     },
     {
-        name: 'Modelo Drone',
+        name: 'Drone',
         image: 'https://dcdn-us.mitiendanube.com/stores/595/405/products/drone-conj-f8d806d77a9e67af6217143415286142-480-0.webp',
         url: 'https://www.cantheris.com/productos/drone/',
     },
     {
-        name: 'Colección Bosque',
+        name: 'Bosque',
         image: 'https://dcdn-us.mitiendanube.com/stores/595/405/products/bosque-conj-2b5fd8259e009d91d317143366894017-480-0.webp',
         url: 'https://www.cantheris.com/productos/bosque/',
     },
@@ -38,7 +42,8 @@ const SPONSORS = [
         logo: snakeLogo,
         url: SNAKE_INSTAGRAM_URL,
         logoClass: 'sponsor-logo-snake',
-        backTheme: 'sponsor-back-snake',
+        promoTheme: 'sponsor-back-snake-promo',
+        productTheme: 'sponsor-back-product-snake',
     },
     {
         id: 'cantheris',
@@ -46,8 +51,10 @@ const SPONSORS = [
         handle: '@cantherisarg',
         logo: cantherisLogo,
         url: CANTHERIS_INSTAGRAM_URL,
+        storeUrl: CANTHERIS_STORE_URL,
         logoClass: 'sponsor-logo-cantheris',
-        backTheme: 'sponsor-back-cantheris',
+        promoTheme: 'sponsor-back-cantheris-promo',
+        productTheme: 'sponsor-back-product-cantheris',
     },
 ]
 
@@ -59,15 +66,13 @@ function getCantherisProductsEndpoint() {
 }
 
 export default function Header() {
-    // flippedIndex: 0 (SNAKE) | 1 (Cantheris) | null
     const [flippedIndex, setFlippedIndex] = useState(null)
     const [hoveredIndex, setHoveredIndex] = useState(null)
-    // Track which back-face mode each sponsor currently holds ('instagram' | 'product')
-    const [cardModes, setCardModes] = useState(['instagram', 'instagram'])
     const [cantherisProducts, setCantherisProducts] = useState(FALLBACK_CANTHERIS_PRODUCTS)
-    const [productIdx, setProductIdx] = useState(0)
-    const [imgFailed, setImgFailed] = useState(false)
-    const productsCountRef = useRef(FALLBACK_CANTHERIS_PRODUCTS.length)
+    const [snakeProductIdx, setSnakeProductIdx] = useState(0)
+    const [cantherisProductIdx, setCantherisProductIdx] = useState(0)
+    const [cantherisImgFailed, setCantherisImgFailed] = useState(false)
+    const cantherisCountRef = useRef(FALLBACK_CANTHERIS_PRODUCTS.length)
 
     // Fetch live Cantheris catalog via Netlify Function
     useEffect(() => {
@@ -79,10 +84,10 @@ export default function Header() {
                 const data = await res.json()
                 if (active && Array.isArray(data.products) && data.products.length > 0) {
                     setCantherisProducts(data.products)
-                    productsCountRef.current = data.products.length
+                    cantherisCountRef.current = data.products.length
                 }
             } catch {
-                // Keep fallback products silently if offline or not deployed yet
+                // Keep fallback products silently if offline
             }
         }
         fetchCatalog()
@@ -92,16 +97,14 @@ export default function Header() {
     // Preload current & next Cantheris product images so flips never flicker
     useEffect(() => {
         if (!cantherisProducts.length) return
-        setImgFailed(false)
-        const curr = cantherisProducts[productIdx % cantherisProducts.length]
-        const next = cantherisProducts[(productIdx + 1) % cantherisProducts.length]
+        setCantherisImgFailed(false)
+        const curr = cantherisProducts[cantherisProductIdx % cantherisProducts.length]
+        const next = cantherisProducts[(cantherisProductIdx + 1) % cantherisProducts.length]
         if (curr?.image) { const i1 = new Image(); i1.src = curr.image }
         if (next?.image) { const i2 = new Image(); i2.src = next.image }
-    }, [cantherisProducts, productIdx])
+    }, [cantherisProducts, cantherisProductIdx])
 
-    // Two-stage 3D flip cycle:
-    // Round 1 (Instagram): SNAKE IG -> Cantheris IG
-    // Round 2 (Products):  SNAKE "Conocé nuestros productos" -> Cantheris live product
+    // Direct Logo -> Product -> Logo -> Next Product staggered flip cycle
     useEffect(() => {
         if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
             return
@@ -118,42 +121,26 @@ export default function Header() {
             timeouts = []
             let t = startDelay
 
-            // --- ROUND 1: INSTAGRAM ---
-            schedule(() => {
-                setCardModes(['instagram', 'instagram'])
-                setFlippedIndex(0)
-            }, t)
-            t += 2600
-            schedule(() => setFlippedIndex(null), t)
-
-            t += 1200
-            schedule(() => setFlippedIndex(1), t)
-            t += 2600
-            schedule(() => setFlippedIndex(null), t)
-
-            // Wait for Cantheris to finish flipping back before swapping back-face content
-            t += 900
-            schedule(() => setCardModes(['product', 'product']), t)
-
-            // --- ROUND 2: PRODUCTS ---
-            t += 900
+            // 1. Flip SNAKE (Logo -> Product/Promo -> Logo)
             schedule(() => setFlippedIndex(0), t)
-            t += 2900
+            t += 3000
             schedule(() => setFlippedIndex(null), t)
+            t += 850
+            if (SNAKE_PRODUCTS.length > 1) {
+                schedule(() => setSnakeProductIdx((prev) => (prev + 1) % SNAKE_PRODUCTS.length), t)
+            }
 
-            t += 1200
+            // 2. Flip Cantheris (Logo -> Live Product -> Logo -> advance to next product)
+            t += 450
             schedule(() => setFlippedIndex(1), t)
             t += 3200
             schedule(() => setFlippedIndex(null), t)
-
-            // Advance to next Cantheris product after flipping back face-front
-            t += 900
+            t += 850
             schedule(() => {
-                setProductIdx((prev) => (prev + 1) % Math.max(productsCountRef.current, 1))
-                setCardModes(['instagram', 'instagram'])
+                setCantherisProductIdx((prev) => (prev + 1) % Math.max(cantherisCountRef.current, 1))
             }, t)
 
-            // Restart full cycle after a calm pause
+            // Calm pause showing both logos, then repeat with next products
             t += 1600
             schedule(() => runCycle(0), t)
         }
@@ -166,8 +153,12 @@ export default function Header() {
         }
     }, [])
 
-    const activeProduct = cantherisProducts.length > 0
-        ? cantherisProducts[productIdx % cantherisProducts.length]
+    const activeSnakeProduct = SNAKE_PRODUCTS.length > 0
+        ? SNAKE_PRODUCTS[snakeProductIdx % SNAKE_PRODUCTS.length]
+        : null
+
+    const activeCantherisProduct = cantherisProducts.length > 0 && !cantherisImgFailed
+        ? cantherisProducts[cantherisProductIdx % cantherisProducts.length]
         : null
 
     return (
@@ -186,17 +177,16 @@ export default function Header() {
                 <div className="header-sponsors-grid">
                     {SPONSORS.map((sponsor, idx) => {
                         const isFlipped = hoveredIndex === idx || (hoveredIndex === null && flippedIndex === idx)
-                        const mode = cardModes[idx]
-                        const showingCantherisProduct = sponsor.id === 'cantheris' && mode === 'product' && activeProduct && !imgFailed
-                        const showingSnakeProduct = sponsor.id === 'snake' && mode === 'product'
+                        const activeProduct = sponsor.id === 'cantheris'
+                            ? activeCantherisProduct
+                            : activeSnakeProduct
 
-                        // When Cantheris is showing a product, clicking opens that product directly
-                        const targetUrl = isFlipped && showingCantherisProduct
-                            ? activeProduct.url
-                            : sponsor.url
+                        const targetUrl = isFlipped && activeProduct
+                            ? (activeProduct.url || sponsor.url)
+                            : (isFlipped && sponsor.storeUrl ? sponsor.storeUrl : sponsor.url)
 
-                        const targetLabel = isFlipped && showingCantherisProduct
-                            ? `Ver ${activeProduct.name} en Cantheris`
+                        const targetLabel = isFlipped && activeProduct
+                            ? `Ver ${activeProduct.name} de ${sponsor.name}`
                             : `Visitar Instagram de ${sponsor.name} (${sponsor.handle})`
 
                         return (
@@ -212,7 +202,7 @@ export default function Header() {
                                 onMouseLeave={() => setHoveredIndex(null)}
                             >
                                 <div className={`sponsor-flip-inner ${isFlipped ? 'is-flipped' : ''}`}>
-                                    {/* Front Face: Brand Logo */}
+                                    {/* Front Face: Brand Logo + corner IG badge */}
                                     <div className={`sponsor-face sponsor-face-front ${idx === 1 ? 'sheen-delayed' : ''}`}>
                                         <span className="sponsor-corner-ig" aria-hidden="true">
                                             <Instagram size={11} strokeWidth={2.4} />
@@ -224,14 +214,14 @@ export default function Header() {
                                         />
                                     </div>
 
-                                    {/* Back Face: alternates between Instagram & Products */}
-                                    {showingCantherisProduct ? (
-                                        <div className="sponsor-face sponsor-face-back sponsor-back-product">
+                                    {/* Back Face: Product showcase (or promo fallback) */}
+                                    {activeProduct ? (
+                                        <div className={`sponsor-face sponsor-face-back sponsor-back-product ${sponsor.productTheme}`}>
                                             <img
                                                 src={activeProduct.image}
                                                 alt={activeProduct.name}
                                                 className="sponsor-product-thumb"
-                                                onError={() => setImgFailed(true)}
+                                                onError={sponsor.id === 'cantheris' ? () => setCantherisImgFailed(true) : undefined}
                                             />
                                             <div className="sponsor-back-text">
                                                 <span className="sponsor-product-name">{activeProduct.name}</span>
@@ -240,8 +230,8 @@ export default function Header() {
                                                 </span>
                                             </div>
                                         </div>
-                                    ) : showingSnakeProduct ? (
-                                        <div className="sponsor-face sponsor-face-back sponsor-back-snake-promo">
+                                    ) : (
+                                        <div className={`sponsor-face sponsor-face-back ${sponsor.promoTheme}`}>
                                             <span className="sponsor-promo-badge" aria-hidden="true">
                                                 <ShoppingBag size={15} strokeWidth={2.4} />
                                             </span>
@@ -249,18 +239,6 @@ export default function Header() {
                                                 <span className="sponsor-promo-title">Conocé nuestros productos</span>
                                                 <span className="sponsor-back-cta">
                                                     Ver catálogo <ExternalLink size={10} />
-                                                </span>
-                                            </div>
-                                        </div>
-                                    ) : (
-                                        <div className={`sponsor-face sponsor-face-back ${sponsor.backTheme}`}>
-                                            <span className="sponsor-ig-badge" aria-hidden="true">
-                                                <Instagram size={15} strokeWidth={2.4} />
-                                            </span>
-                                            <div className="sponsor-back-text">
-                                                <span className="sponsor-back-handle">{sponsor.handle}</span>
-                                                <span className="sponsor-back-cta">
-                                                    Ver Instagram <ExternalLink size={10} />
                                                 </span>
                                             </div>
                                         </div>

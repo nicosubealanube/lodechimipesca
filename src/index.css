@@ -451,26 +451,33 @@ select:focus {
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
-.sponsor-back-snake {
-  background: linear-gradient(135deg, #082032 0%, #0077B6 100%);
-}
-
 .sponsor-back-snake-promo {
   background: linear-gradient(135deg, #0077B6 0%, #00A8E8 100%);
 }
 
-.sponsor-back-cantheris {
+.sponsor-back-cantheris-promo {
   background: linear-gradient(135deg, #16221F 0%, #1E4E4E 100%);
 }
 
-/* Cantheris live product showcase face */
+/* Live product showcase face */
 .sponsor-back-product {
   background: linear-gradient(180deg, #FFFFFF 0%, #F4F7F8 100%);
-  border: 1.5px solid #1E4E4E;
   padding: 6px 8px;
   gap: 8px;
   justify-content: flex-start;
   color: #0F172A;
+}
+
+.sponsor-back-product-cantheris {
+  border: 1.5px solid #1E4E4E;
+}
+
+.sponsor-back-product-snake {
+  border: 1.5px solid #0099DB;
+}
+
+.sponsor-back-product-snake .sponsor-product-cta {
+  color: #0077B6;
 }
 
 .sponsor-product-thumb {
