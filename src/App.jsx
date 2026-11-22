@@ -13,7 +13,6 @@ import FishingLicense from './components/FishingLicense'
 import { getFishingPrediction } from './utils/fishingLogic'
 import { fetchWeatherWithFallback } from './utils/weatherService'
 import InaRiverHeight from './components/InaRiverHeight'
-import ShareForecastButton from './components/ShareForecastButton'
 
 import coheloImage from './assets/cohelo_san_fernando.png'
 import cohelo2Image from './assets/cohelo2.jpg'
@@ -776,13 +775,6 @@ function App() {
                         )}
                         <div className="prediction-banner">
                             {getFishingPrediction(weatherData)}
-                        </div>
-                        <div className="share-action-bar">
-                            <ShareForecastButton
-                                locationName={activeLocationToUse.name}
-                                dateOffset={dateOffset}
-                                weatherData={weatherData}
-                            />
                         </div>
                         <WeatherCard data={weatherData} lat={activeLocationToUse.lat} lon={activeLocationToUse.lon} />
                         <InaRiverHeight locationName={activeLocationToUse.name} />
